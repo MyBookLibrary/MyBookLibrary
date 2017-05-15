@@ -8,17 +8,27 @@ Do not forget to update the ToDo list by every change :)!
 
 ### Database Model
 
-Book {
+Book: 
+{
 	Id;
 	Title;
-	Author;
 	CoverImage;
 	Description;
+	AuthorId;
+	GenreId;
 }
 
-Genre {
+Genres: 
+{
 	Id;
 	Name;
+}
+
+Authors: 
+{
+	Id;
+	FirstName;
+	LastName;
 }
 
 ### Home Feature
