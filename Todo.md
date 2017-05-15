@@ -8,8 +8,7 @@ Do not forget to update the ToDo list by every change :)!
 
 ### Database Model
 
-Book: 
-{
+Book = {
 	Id;
 	Title;
 	CoverImage;
@@ -18,14 +17,12 @@ Book:
 	GenreId;
 }
 
-Genres: 
-{
+Genres = {
 	Id;
 	Name;
 }
 
-Authors: 
-{
+Authors = {
 	Id;
 	FirstName;
 	LastName;
