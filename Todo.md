@@ -3,8 +3,8 @@
 Do not forget to update the ToDo list by every change :)!
 ----------
 ## Features-driven Development
-- [ ] Create database model;
-- [ ] Create seed data;
+- [x] Create database model;
+- [x] Create seed data;
 
 ### Database Model
 
