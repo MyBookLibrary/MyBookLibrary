@@ -1,4 +1,4 @@
-USE [BookLibraty]
+USE [BookLibrary]
 GO
 
 INSERT INTO [dbo].[Genres] ([Id] ,[Name])
