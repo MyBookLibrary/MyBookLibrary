@@ -37,7 +37,7 @@ Authors = {
 - [x] Define guard constants;
 - [ ] Set data model constraints in MSSQL;
 - [x] Set data model guard attributes in MetaData file;
-- [ ] Create Service Data class and implement the basic CRUD (Create, Read, Update, Delete) operations;
+- [x] Create Service Data class and implement the basic CRUD (Create, Read, Update, Delete) operations;
 - [ ] Bind all in the used container-Ninject.
 - [ ] Raw view for Preview, Edit, Insert, Delete;
 - [ ] Add View Model with validation attributes;
