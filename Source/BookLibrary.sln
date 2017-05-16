@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Ef.Models", "Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Contracts", "BookLibrary.Contracts\BookLibrary.Contracts.csproj", "{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{62C6D9D2-3312-48AD-8551-096614C5CDF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Data.Provider", "BookLibrary.Data.Provider\BookLibrary.Data.Provider.csproj", "{04EF2B4B-66A2-4007-9795-6BEA0A94B9A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04EF2B4B-66A2-4007-9795-6BEA0A94B9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04EF2B4B-66A2-4007-9795-6BEA0A94B9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04EF2B4B-66A2-4007-9795-6BEA0A94B9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04EF2B4B-66A2-4007-9795-6BEA0A94B9A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +74,6 @@ Global
 		{31177505-BD9C-4384-A6EC-098C2E7D137E} = {120EAD57-4D74-4B1E-AC5A-C02BCBAD6698}
 		{9DB296B7-B83C-4DFE-90BF-533579154216} = {68A15FE7-75CA-4AF6-960D-54A27459A515}
 		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0} = {68A15FE7-75CA-4AF6-960D-54A27459A515}
+		{04EF2B4B-66A2-4007-9795-6BEA0A94B9A8} = {62C6D9D2-3312-48AD-8551-096614C5CDF3}
 	EndGlobalSection
 EndGlobal
