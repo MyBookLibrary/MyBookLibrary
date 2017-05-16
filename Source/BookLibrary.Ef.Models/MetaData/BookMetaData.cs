@@ -28,6 +28,10 @@ namespace BookLibrary.Ef.Models.MetaData
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Creation Date")]
+        public DateTime CreationDate { get; set; }
+
+        [Required]
         [Display(Name = "AuthorId")]
         public int AuthorId { get; set; }
 

@@ -14,6 +14,8 @@ namespace BookLibrary.Ef.Models.Contracts
 
         string Description { get; set; }
 
+        DateTime CreationDate { get; set; }
+
         int AuthorId { get; set; }
 
         int GenreId { get; set; }
