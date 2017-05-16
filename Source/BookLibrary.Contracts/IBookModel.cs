@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace BookLibrary.Contracts
 {
-    public interface IBook
+    public interface IBookModel : IHasIntId
     {
         string Title { get; set; }
 
         string Description { get; set; }
 
-        IAuthor Author { get; set; }
+        DateTime CreationDate { get; set; }
 
-        IGenre Genre { get; set; }
+        IAuthorModel Author { get; set; }
+
+        IGenreModel Genre { get; set; }
     }
 }

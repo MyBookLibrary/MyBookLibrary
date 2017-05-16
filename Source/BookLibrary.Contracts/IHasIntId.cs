@@ -8,6 +8,6 @@ namespace BookLibrary.Contracts
 {
     public interface IHasIntId
     {
-        int Id { get;  set; }
+        int Id { get; set; }
     }
 }
