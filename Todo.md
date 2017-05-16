@@ -72,7 +72,8 @@ Authors = {
 1. [ ] Create Manual job for SIT IIS deploy - ManualSitDeploy.
 
 ### General Tasks
-1. [ ] Separate the Identity in project .Identity;
+1. [x] Separate the Identity in project *.Default.Auth;
+1. [ ] Data provider project with the general CRUD operations *.Data.Provider;
 1. [ ] Crate separate Ef Models, Pure Models and View Models and MyMapper;
 	- https://lostechies.com/jimmybogard/2009/06/30/how-we-do-mvc-view-models/
 1. [ ] Change the favicon;
