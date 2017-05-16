@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{68A15F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Ef.Models", "BookLibrary.Ef.Models\BookLibrary.Ef.Models.csproj", "{9DB296B7-B83C-4DFE-90BF-533579154216}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Contracts", "BookLibrary.Contracts\BookLibrary.Contracts.csproj", "{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{9DB296B7-B83C-4DFE-90BF-533579154216}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DB296B7-B83C-4DFE-90BF-533579154216}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DB296B7-B83C-4DFE-90BF-533579154216}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{CF736449-6F01-4703-A351-A5D7483F6FC4} = {AC608D75-F459-41C9-B4D9-2805CD7E9A95}
 		{31177505-BD9C-4384-A6EC-098C2E7D137E} = {120EAD57-4D74-4B1E-AC5A-C02BCBAD6698}
 		{9DB296B7-B83C-4DFE-90BF-533579154216} = {68A15FE7-75CA-4AF6-960D-54A27459A515}
+		{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0} = {68A15FE7-75CA-4AF6-960D-54A27459A515}
 	EndGlobalSection
 EndGlobal
