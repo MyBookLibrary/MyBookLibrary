@@ -31,12 +31,12 @@ Authors = {
 ### Home Feature
 
 ### Books Feature
-- [ ] Database maping;
-- [ ] Extract and use data model interface;
-- [ ] Create data model second partial class and inherit the respective Interface;
-- [ ] Define guard constants;
+- [x] Database maping;
+- [x] Extract and use data model interface;
+- [x] Create data model second partial class and inherit the respective Interface;
+- [x] Define guard constants;
 - [ ] Set data model constraints in MSSQL;
-- [ ] Set data model guard attributes in MetaData file;
+- [x] Set data model guard attributes in MetaData file;
 - [ ] Create Service Data class and implement the basic CRUD (Create, Read, Update, Delete) operations;
 - [ ] Bind all in the used container-Ninject.
 - [ ] Raw view for Preview, Edit, Insert, Delete;
