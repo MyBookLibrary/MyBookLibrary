@@ -1,4 +1,4 @@
-﻿@model BookLibrary.ViewModels.Author.AuthorMainViewModel
+﻿@model BookLibrary.ViewModels.Genre.GenreMainViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,19 +7,19 @@
 <div class="container">
     <div class="raw" style="margin-top: 20px;">
         <div class="col-md-2">
-            <a href="@Url.Action("Index", "AdminCategories", null)" class="btn btn-primary">
+            <a href="@Url.Action("Index", "Genre", null)" class="btn btn-primary">
                 <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
-                Categories
+                Genres
             </a>
         </div>
         <div class="col-md-6">
-            <h2 class="red-fg">Edit category</h2>
+            <h2 class="red-fg">Add genre</h2>
         </div>
     </div>
     <div class="raw">
         <div class="col-md-8">
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "editForm" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "createForm" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -38,36 +38,28 @@
                         </tr>
                         <tr>
                             <td>
-                                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label pull-right" })
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label pull-right" })
                             </td>
                             <td>
-                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                             </td>
                         </tr>
+
                         <tr>
-                            <td>
-                                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label pull-right" })
-                            </td>
-                            <td>
-                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="background-color:lightsteelblue">&nbsp;</td>
+                            <td style="background-color:lightsteelblue"></td>
                             <td style="background-color:lightsteelblue">
                                 <button type="reset"
                                         id="resetButton"
-                                        onclick="location.href='@Url.Action("Index","Author")'"
+                                        onclick="location.href='@Url.Action("Index","Genre")'"
                                         class="btn btn-default">
                                     <span class="glyphicon glyphicon-remove"></span>
                                     Cancel
                                 </button>
                                 <button type="submit"
                                         id="saveButton"
-                                        value="Edit"
-                                        onclick="location.href='@Url.Action("Edit","Author")'"
+                                        value="Create"
+                                        onclick="location.href='@Url.Action("Create","Genre")'"
                                         class="btn btn-default disabled">
                                     <span class="glyphicon glyphicon-floppy-save"></span>
                                     Save
@@ -103,37 +95,24 @@
         }
 
         function validateForm() {
-            var editForm = $('#editForm');
-            var validator = editForm.validate();
+            var createForm = $('#createForm');
+            var validator = createForm.validate();
             validator.form();
 
-            if (editForm.valid()) {
-                console.log(editForm.valid());
+            if (createForm.valid()) {
+                console.log(createForm.valid());
                 enableSaveButton();
             } else {
-                console.log(editForm.valid());
+                console.log(createForm.valid());
                 disableSaveButton();
             }
         }
 
-        // Enable save button on load, assume you are going to edit a valid item
-        $(document).ready(function(){
-            enableSaveButton();
+        $(document).ready(function () {
+            $('#Name').on("input", function () {
+                validateForm();
+            });
         });
 
-        $(document).ready(function () {
-            $('#FirstName').on("input", function () {
-                validateForm();
-            });
-        });
-        $(document).ready(function () {
-            $('#LastName').on("input", function () {
-                validateForm();
-            });
-        });
 </script>
-
-
-
-
 

@@ -1,4 +1,4 @@
-﻿@model BookLibrary.ViewModels.Author.AuthorMainViewModel
+﻿@model BookLibrary.ViewModels.Genre.GenreMainViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,28 +38,19 @@
                         </tr>
                         <tr>
                             <td>
-                                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label pull-right" })
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label pull-right" })
                             </td>
                             <td>
-                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                             </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label pull-right" })
-                            </td>
-                            <td>
-                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                            </td>
-                        </tr>
+                        </tr>                        
                         <tr>
                             <td style="background-color:lightsteelblue">&nbsp;</td>
                             <td style="background-color:lightsteelblue">
                                 <button type="reset"
                                         id="resetButton"
-                                        onclick="location.href='@Url.Action("Index","Author")'"
+                                        onclick="location.href='@Url.Action("Index","Genre")'"
                                         class="btn btn-default">
                                     <span class="glyphicon glyphicon-remove"></span>
                                     Cancel
@@ -67,7 +58,7 @@
                                 <button type="submit"
                                         id="saveButton"
                                         value="Edit"
-                                        onclick="location.href='@Url.Action("Edit","Author")'"
+                                        onclick="location.href='@Url.Action("Edit","Genre")'"
                                         class="btn btn-default disabled">
                                     <span class="glyphicon glyphicon-floppy-save"></span>
                                     Save
@@ -122,18 +113,10 @@
         });
 
         $(document).ready(function () {
-            $('#FirstName').on("input", function () {
-                validateForm();
-            });
-        });
-        $(document).ready(function () {
-            $('#LastName').on("input", function () {
+            $('#Name').on("input", function () {
                 validateForm();
             });
         });
 </script>
-
-
-
 
 
