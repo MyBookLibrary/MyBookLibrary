@@ -21,11 +21,29 @@ namespace BookLibrary.Pure.Models
             this.Id = book.Id;
             this.Title = book.Title;
             this.Description = book.Description;
+            this.Pages = book.Pages;
             this.CreationDate = book.CreationDate;
             // TODO Factory Extract ???
             this.Author = new AuthorModel(book.Author);
             // TODO Factory Extract ???
             this.Genre = new GenreModel(book.Genre);            
+        }
+
+        // This constructor is used for DbModel 2 PureModel papping
+        // IBook is the Ef model interface
+        public BookModel(IBook book, IPicture picture)
+        {
+            this.Id = book.Id;
+            this.Title = book.Title;
+            this.Description = book.Description;
+            this.Pages = book.Pages;
+            this.CreationDate = book.CreationDate;
+            // TODO Factory Extract ???
+            this.Author = new AuthorModel(book.Author);
+            // TODO Factory Extract ???
+            this.Genre = new GenreModel(book.Genre);
+
+            this.Picture = new PictureModel(picture);
         }
 
         public int Id { get; set; }
@@ -34,6 +52,8 @@ namespace BookLibrary.Pure.Models
 
         public string Description { get; set; }
 
+        public int Pages { get; set; }
+
         public DateTime CreationDate { get; set; }
 
         public IAuthorModel Author { get; set; }
@@ -41,5 +61,6 @@ namespace BookLibrary.Pure.Models
         public IGenreModel Genre { get; set; }
 
         public IPictureModel Picture { get; set; }
+
     }
 }

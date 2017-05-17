@@ -12,6 +12,8 @@ namespace BookLibrary.Contracts
 
         string Description { get; set; }
 
+        int Pages { get; set; }
+
         DateTime CreationDate { get; set; }
 
         IAuthorModel Author { get; set; }
