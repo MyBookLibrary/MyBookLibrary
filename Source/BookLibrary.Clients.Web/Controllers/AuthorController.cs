@@ -104,19 +104,25 @@ namespace BookLibrary.Controllers
         }
 
         // POST: Author/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Include = "Id, FirstName, LastName")] AuthorMainViewModel authorMainViewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                // TODO refactore when mapper created
+                AuthorModel authorModelToUpdate = new AuthorModel();
+                authorModelToUpdate.Id = authorMainViewModel.Id;
+                authorModelToUpdate.FirstName = authorMainViewModel.FirstName;
+                authorModelToUpdate.LastName = authorMainViewModel.LastName;
+
+                this.authorService.UpdateAuthor(authorModelToUpdate);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(authorMainViewModel);
         }
 
         // GET: Author/Delete/5
