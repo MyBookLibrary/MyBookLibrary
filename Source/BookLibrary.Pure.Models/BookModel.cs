@@ -39,6 +39,5 @@ namespace BookLibrary.Pure.Models
         public IAuthorModel Author { get; set; }
         
         public IGenreModel Genre { get; set; }
-
     }
 }

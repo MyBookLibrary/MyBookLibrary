@@ -36,6 +36,5 @@ namespace BookLibrary.Pure.Models
                 return this.FirstName + " " + this.LastName;
             }
         }
-
     }
 }

@@ -44,6 +44,8 @@
     <Compile Include="BookService.cs" />
     <Compile Include="Contracts\IAuthorService.cs" />
     <Compile Include="Contracts\IBookService.cs" />
+    <Compile Include="Contracts\IGenreService.cs" />
+    <Compile Include="GenreService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
