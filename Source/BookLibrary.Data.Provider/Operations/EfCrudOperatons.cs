@@ -3,6 +3,7 @@ using BookLibrary.Contracts;
 using BookLibrary.Data.Provider.Contracts;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -76,9 +77,9 @@ namespace BookLibrary.Data.Provider.Operations
 
         public IEnumerable<T> Select()
         {
-            IEnumerable<T> categoriesToReturn = this.DbSet.Select(c => c);
+            IEnumerable<T> entitiesToReturn = this.DbSet.Select(c => c);
 
-            return categoriesToReturn;
+            return entitiesToReturn;
         }
 
         public IEnumerable<T> Select(Expression<Func<T, bool>> filterExpression)
@@ -97,7 +98,7 @@ namespace BookLibrary.Data.Provider.Operations
             return itemsToReturn;
         }
 
-        public int Insert(T entity)
+        public int Insert(T entity, DatabaseGeneratedOption dbGeneratedOption)
         {
             if (entity == null)
             {
@@ -111,11 +112,23 @@ namespace BookLibrary.Data.Provider.Operations
             }
             else
             {
-                entity.Id = this.GetMaxId() + 1;
+                if (dbGeneratedOption == DatabaseGeneratedOption.Identity)
+                {
+                    entity.Id = -1;
+                }
+                else
+                {
+                    entity.Id = this.GetMaxId() + 1;
+                }
+
                 this.DbSet.Add(entity);
+
             }
 
-            return entity.Id;
+            // TODO select item by id
+            int idToReturn = entity.Id;
+
+            return idToReturn;
         }
 
         public int Update(T entity)
@@ -186,7 +199,7 @@ namespace BookLibrary.Data.Provider.Operations
 
             try
             {
-                maxId = this.DbSet.Max(c => c.Id);
+                maxId = (int)this.DbSet.Max(c => c.Id);
             }
             catch (InvalidOperationException)
             {

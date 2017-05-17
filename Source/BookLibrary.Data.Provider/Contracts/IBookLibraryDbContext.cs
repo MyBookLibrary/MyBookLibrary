@@ -1,4 +1,5 @@
-﻿using BookLibrary.Ef.Models;
+﻿using BookLibrary.Contracts;
+using BookLibrary.Ef.Models;
 using BookLibrary.Ef.Models.Contracts;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace BookLibrary.Data.Provider.Contracts
         IDbSet<Author> Author { get; set; }
 
         IDbSet<Book> Book { get; set; }
+
+        IDbSet<Picture> Picture { get; set; }
 
         EntityState GetEntityState(object entity);
 

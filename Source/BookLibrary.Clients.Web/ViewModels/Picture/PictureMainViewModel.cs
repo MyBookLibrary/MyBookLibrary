@@ -1,20 +1,63 @@
 ﻿using BookLibrary.Constants.Models;
-using BookLibrary.Ef.Models.Contracts;
+using BookLibrary.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace BookLibrary.Ef.Models.MetaData
+namespace BookLibrary.ViewModels.Picture
 {
-
-    public class PictureMetaData : IPicture
+    public class PictureMainViewModel
     {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public PictureMainViewModel()
+        {
+        }
+
+        public PictureMainViewModel(IPictureModel pictureModel)
+        {
+            this.Id = pictureModel.Id;
+            this.Name = pictureModel.Name;
+            this.Width = pictureModel.Width;
+            this.Height = pictureModel.Height;
+            this.SizeMb = pictureModel.SizeMb;
+            this.Url = pictureModel.Url;
+        }
+
+        public PictureMainViewModel(int id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
+        public PictureMainViewModel(int id, string name, int width, int height)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Width = width;
+            this.Height = height;
+        }
+
+        public PictureMainViewModel(int id, string name, int width, int height, int sizeMb)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Width = width;
+            this.Height = height;
+            this.SizeMb = sizeMb;
+        }
+
+        public PictureMainViewModel(int id, string name, int width, int height, int sizeMb, string url)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Width = width;
+            this.Height = height;
+            this.SizeMb = sizeMb;
+            this.Url = url;
+        }
+
+        [Required]
         [Display(Name = "Id")]
         [Range(Consts.Picture.Id.MinValue, Consts.Picture.Id.MaxValue, ErrorMessage = Consts.Picture.Id.ErrorMessage)]
         public int Id { get; set; }

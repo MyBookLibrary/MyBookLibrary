@@ -7,6 +7,7 @@ using BookLibrary.Ef.Models.Contracts;
 using BookLibrary.Pure.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace BookLibrary.Data.Services
@@ -118,7 +119,7 @@ namespace BookLibrary.Data.Services
             authorToInsert.FirstName = authorModel.FirstName;
             authorToInsert.LastName = authorModel.LastName;
 
-            int insertedAuthorId = this.authorBaseOperatonsProvider.Insert(authorToInsert);
+            int insertedAuthorId = this.authorBaseOperatonsProvider.Insert(authorToInsert, DatabaseGeneratedOption.None);
             this.dbContextSaveChanges.SaveChanges();
 
             return insertedAuthorId;
@@ -134,7 +135,7 @@ namespace BookLibrary.Data.Services
 
             // TODO refactore when model mapper created - AuthorModel2Author
             Author authorToUpdate = new Author();
-            authorToUpdate.Id = authorModel.Id;
+            authorToUpdate.Id = (int)authorModel.Id;
             authorToUpdate.FirstName = authorModel.FirstName;
             authorToUpdate.LastName = authorModel.LastName;
 

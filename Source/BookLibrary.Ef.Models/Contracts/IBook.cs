@@ -19,14 +19,16 @@ namespace BookLibrary.Ef.Models.Contracts
 
         DateTime CreationDate { get; set; }
 
-        int PictureId { get; set; }
-
         int AuthorId { get; set; }
 
         int GenreId { get; set; }
 
+        int PictureId { get; set; }
+
         Author Author { get; set; }
 
         Genre Genre { get; set; }
+
+        Picture Picture { get; set; }
     }
 }

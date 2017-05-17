@@ -16,6 +16,12 @@ namespace BookLibrary.Contracts
 
         DateTime CreationDate { get; set; }
 
+        int AuthorId { get; set; }
+
+        int GenreId { get; set; }
+
+        int PictureId { get; set; }
+
         IAuthorModel Author { get; set; }
 
         IGenreModel Genre { get; set; }

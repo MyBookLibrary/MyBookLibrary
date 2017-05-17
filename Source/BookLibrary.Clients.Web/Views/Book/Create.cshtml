@@ -59,6 +59,17 @@
                             </td>
                         </tr>
 
+                        @*Pages*@
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.Pages, htmlAttributes: new { @class = "control-label pull-right" })
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.Pages, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.Pages, new { htmlAttributes = new { @class = "form-control" } })
+                            </td>
+                        </tr>
+
                         @*Author*@
                         <tr>
                             <td>
@@ -81,6 +92,16 @@
                             </td>
                         </tr>
                         
+                        @*Picture*@
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.PictureUrl, htmlAttributes: new { @class = "control-label pull-right" })
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.PictureUrl, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.PictureUrl, new { htmlAttributes = new { @class = "form-control" } })
+                            </td>
+                        </tr>
                        
 
                         <tr>
@@ -147,6 +168,11 @@
 
         $(document).ready(function () {
             $('#Title').on("input", function () {
+                validateForm();
+            });
+        });
+        $(document).ready(function () {
+            $('#Pages').on("input", function () {
                 validateForm();
             });
         });

@@ -1,4 +1,5 @@
 ﻿using BookLibrary.Constants.Models;
+using BookLibrary.Contracts;
 using BookLibrary.ViewModels.Author;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,10 @@ namespace BookLibrary.ViewModels
 {
     public class BookCreateViewModel
     {
+        public BookCreateViewModel()
+        {
+        }
+
         [Required]
         [Display(Name = "Id")]
         [Range(Consts.Book.Id.MinValue, Consts.Book.Id.MaxValue, ErrorMessage = Consts.Book.Id.ErrorMessage)]
@@ -27,6 +32,10 @@ namespace BookLibrary.ViewModels
         [MinLength(Consts.Book.Description.MinLength, ErrorMessage = Consts.Book.Description.ErrorMessageMinLength)]
         public string Description { get; set; }
 
+        [Display(Name = "Pages")]
+        [Range(Consts.Book.Pages.MinValue, Consts.Book.Pages.MaxValue, ErrorMessage = Consts.Book.Pages.ErrorMessage)]
+        public int Pages { get; set; }
+
         [Required]
         [Display(Name = "Creation Date")]
         public DateTime CreationDate { get; set; }
@@ -38,6 +47,11 @@ namespace BookLibrary.ViewModels
         [Display(Name = "Select Genre")]
         public int SelectedGenreId { get; set; }
         public IEnumerable<SelectListItem> GenreSelectList { get; set; }
+
+        [Display(Name = "Picture Url")]
+        [MaxLength(Consts.Picture.Url.MaxLength, ErrorMessage = Consts.Picture.Url.ErrorMessageMaxLength)]
+        [MinLength(Consts.Picture.Url.MinLength, ErrorMessage = Consts.Picture.Url.ErrorMessageMinLength)]
+        public string PictureUrl { get; set; }
 
         [Display(Name ="Create Book")]
         public string ModelName { get; set; }

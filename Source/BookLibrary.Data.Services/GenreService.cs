@@ -10,6 +10,7 @@ using BookLibrary.Data.Provider.Contracts;
 using BookLibrary.Ef.Models;
 using BookLibrary.Constants;
 using BookLibrary.Ef.Models.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookLibrary.Data.Services
 {
@@ -119,7 +120,7 @@ namespace BookLibrary.Data.Services
             Genre genreToInsert = new Genre();
             genreToInsert.Name = genreModel.Name;
 
-            int insertedGenreId = this.genreBaseOperatonsProvider.Insert(genreToInsert);
+            int insertedGenreId = this.genreBaseOperatonsProvider.Insert(genreToInsert, DatabaseGeneratedOption.None);
             this.dbContextSaveChanges.SaveChanges();
 
             return insertedGenreId;
@@ -135,7 +136,7 @@ namespace BookLibrary.Data.Services
 
             // TODO refactore when model mapper created - GenreModel2Genre
             Genre genreToUpdate = new Genre();
-            genreToUpdate.Id = genreModel.Id;
+            genreToUpdate.Id = (int)genreModel.Id;
             genreToUpdate.Name = genreModel.Name;
 
             this.genreBaseOperatonsProvider.Update(genreToUpdate);

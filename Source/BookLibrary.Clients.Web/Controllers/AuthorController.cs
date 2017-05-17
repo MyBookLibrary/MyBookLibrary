@@ -97,7 +97,7 @@ namespace BookLibrary.Controllers
 
             // TODO refactore when mapper created ???
             AuthorMainViewModel authorMainViewModel = new AuthorMainViewModel(
-                authorModel.Id,
+                (int)authorModel.Id,
                 authorModel.FirstName,
                 authorModel.LastName);
 
@@ -149,7 +149,7 @@ namespace BookLibrary.Controllers
                 throw new ArgumentNullException(errorMessage);
             }
             AuthorMainViewModel authorMainViewModel = new AuthorMainViewModel();
-            authorMainViewModel.Id = authorModel.Id;
+            authorMainViewModel.Id = (int)authorModel.Id;
             authorMainViewModel.FirstName = authorModel.FirstName;
             authorMainViewModel.LastName = authorModel.LastName;
 

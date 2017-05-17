@@ -91,7 +91,7 @@ namespace BookLibrary.Controllers
 
             // TODO refactore when mapper created ???
             GenreMainViewModel genreMainViewModel = new GenreMainViewModel(
-                genreModel.Id,
+                (int)genreModel.Id,
                 genreModel.Name);
 
             return View(genreMainViewModel);
@@ -141,7 +141,7 @@ namespace BookLibrary.Controllers
                 throw new ArgumentNullException(errorMessage);
             }
             GenreMainViewModel genreMainViewModel = new GenreMainViewModel();
-            genreMainViewModel.Id = genreModel.Id;
+            genreMainViewModel.Id = (int)genreModel.Id;
             genreMainViewModel.Name = genreModel.Name;
 
             return PartialView("_DeleteConfirm", genreMainViewModel);

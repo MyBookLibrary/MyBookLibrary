@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -17,7 +18,7 @@ namespace BookLibrary.Data.Provider.Contracts
 
         IEnumerable<T> Select(Expression<Func<T, bool>> filterExpression);
 
-        int Insert(T entity);
+        int Insert(T entity, DatabaseGeneratedOption dbGeneratedOptionata);
 
         int Update(T entity);
 

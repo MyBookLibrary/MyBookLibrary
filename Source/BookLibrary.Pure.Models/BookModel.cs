@@ -62,5 +62,10 @@ namespace BookLibrary.Pure.Models
 
         public IPictureModel Picture { get; set; }
 
+        public int AuthorId { get; set; }
+
+        public int GenreId { get; set; }
+
+        public int PictureId { get; set; }
     }
 }

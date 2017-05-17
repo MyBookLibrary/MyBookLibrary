@@ -6,12 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8e344bc59be24e8a81829497e3cd742e" Name="Diagram1">
         <EntityTypeShape EntityType="BookLibraryModel.Author" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookLibraryModel.Book" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BookLibraryModel.Genre" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="BookLibraryModel.FK_Books_Authors" ManuallyRouted="false" />
-        <AssociationConnector Association="BookLibraryModel.FK_Books_Genres" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BookLibraryModel.sysdiagram" Width="1.5" PointX="6.875" PointY="4.625" />
         <EntityTypeShape EntityType="BookLibraryModel.Picture" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="BookLibraryModel.Book" Width="1.5" PointX="7.625" PointY="2.375" />
+        <AssociationConnector Association="BookLibraryModel.FK_Books_Authors" />
+        <AssociationConnector Association="BookLibraryModel.FK_Books_Genres" />
         <AssociationConnector Association="BookLibraryModel.FK_Books_Pictures" />
       </Diagram>
     </edmx:Diagrams>

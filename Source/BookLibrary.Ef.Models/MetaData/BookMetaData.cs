@@ -3,6 +3,7 @@ using BookLibrary.Ef.Models.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace BookLibrary.Ef.Models.MetaData
     public class BookMetaData : IBook
     {
         [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Id")]
         [Range(Consts.Book.Id.MinValue, Consts.Book.Id.MaxValue, ErrorMessage = Consts.Book.Id.ErrorMessage)]
         public int Id { get; set; }
@@ -50,5 +52,7 @@ namespace BookLibrary.Ef.Models.MetaData
         public Author Author { get; set; }
 
         public Genre Genre { get; set; }
+
+        public Picture Picture { get; set; }
     }
 }

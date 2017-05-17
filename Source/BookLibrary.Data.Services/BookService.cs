@@ -1,24 +1,23 @@
-﻿using BookLibrary.Data.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BookLibrary.Constants;
 using BookLibrary.Contracts;
-using BookLibrary.Constants;
 using BookLibrary.Data.Provider.Contracts;
+using BookLibrary.Data.Services.Contracts;
+using BookLibrary.Ef.Models;
 using BookLibrary.Ef.Models.Contracts;
 using BookLibrary.Pure.Models;
-using BookLibrary.Ef.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace BookLibrary.Data.Services
 {
     public class BookService : IBookService
     {
-        private readonly IEfCrudOperatons<IBook> bookBaseOperatonsProvider;
+        private readonly IEfCrudOperatons<Book> bookBaseOperatonsProvider;
         private readonly IEfDbContextSaveChanges dbContextSaveChanges;
 
-        public BookService(IEfCrudOperatons<IBook> bookBaseOperatonsProvider, IEfDbContextSaveChanges dbContextSaveChanges)
+        public BookService(IEfCrudOperatons<Book> bookBaseOperatonsProvider, IEfDbContextSaveChanges dbContextSaveChanges)
         {
             if (bookBaseOperatonsProvider == null && dbContextSaveChanges == null)
             {
@@ -122,11 +121,15 @@ namespace BookLibrary.Data.Services
             Book bookToInsert = new Book();
             bookToInsert.Title = bookModel.Title;
             bookToInsert.Description = bookModel.Description;
-            bookToInsert.Author = (Author)bookModel.Author;
-            bookToInsert.Genre = (Genre)bookModel.Genre;
+            bookToInsert.Pages = bookModel.Pages;
+            bookToInsert.CreationDate = bookModel.CreationDate;
+
+            bookToInsert.AuthorId = bookModel.AuthorId;
+            bookToInsert.GenreId = bookModel.GenreId;
+            bookToInsert.PictureId = bookModel.PictureId;
 
             // TODO change to return BookModel
-            int newBookId = this.bookBaseOperatonsProvider.Insert(bookToInsert);
+            int newBookId = this.bookBaseOperatonsProvider.Insert(bookToInsert, DatabaseGeneratedOption.Identity);
             this.dbContextSaveChanges.SaveChanges();
 
             return newBookId;
