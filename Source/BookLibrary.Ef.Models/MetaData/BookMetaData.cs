@@ -39,15 +39,15 @@ namespace BookLibrary.Ef.Models.MetaData
 
         [Required]
         [Display(Name = "AuthorId")]
-        public int AuthorId { get; set; }
+        public int? AuthorId { get; set; }
 
         [Required]
         [Display(Name = "GenreId")]
-        public int GenreId { get; set; }
+        public int? GenreId { get; set; }
 
         [Required]
         [Display(Name = "PictureId")]
-        public int PictureId { get; set; }
+        public int? PictureId { get; set; }
 
         public Author Author { get; set; }
 

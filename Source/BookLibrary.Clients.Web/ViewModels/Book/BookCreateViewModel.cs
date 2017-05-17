@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BookLibrary.ViewModels
+namespace BookLibrary.ViewModels.Book
 {
     public class BookCreateViewModel
     {
@@ -53,7 +53,7 @@ namespace BookLibrary.ViewModels
         [MinLength(Consts.Picture.Url.MinLength, ErrorMessage = Consts.Picture.Url.ErrorMessageMinLength)]
         public string PictureUrl { get; set; }
 
-        [Display(Name ="Create Book")]
+        [Display(Name = "Create Book")]
         public string ModelName { get; set; }
     }
 }

@@ -58,8 +58,17 @@ namespace BookLibrary.Data.Services
 
                 foreach (var book in books)
                 {
-                    BookModel b = new BookModel(book);
-                    booksToReturn.Add(b);
+                    BookModel bookModel;
+                    if (book.Picture == null)
+                    {
+                        bookModel = new BookModel(book);
+                    }
+                    else
+                    {
+                        bookModel = new BookModel(book, book.Picture);
+                    }
+                    
+                    booksToReturn.Add(bookModel);
                 }
             }
 

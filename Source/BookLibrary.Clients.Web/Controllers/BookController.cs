@@ -6,7 +6,7 @@ using BookLibrary.Data.Services;
 using BookLibrary.Data.Services.Contracts;
 using BookLibrary.Ef.Models;
 using BookLibrary.Pure.Models;
-using BookLibrary.ViewModels;
+using BookLibrary.ViewModels.Book;
 using Ninject;
 using System;
 using System.Collections.Generic;

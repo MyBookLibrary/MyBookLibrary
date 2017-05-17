@@ -23,10 +23,19 @@ namespace BookLibrary.Pure.Models
             this.Description = book.Description;
             this.Pages = book.Pages;
             this.CreationDate = book.CreationDate;
+
             // TODO Factory Extract ???
-            this.Author = new AuthorModel(book.Author);
+            if(book.AuthorId != null)
+            {
+                this.Author = new AuthorModel(book.Author);
+            }
+
             // TODO Factory Extract ???
-            this.Genre = new GenreModel(book.Genre);            
+            if (book.GenreId != null)
+            {
+                this.Genre = new GenreModel(book.Genre);
+            }
+                        
         }
 
         // This constructor is used for DbModel 2 PureModel papping
@@ -38,10 +47,18 @@ namespace BookLibrary.Pure.Models
             this.Description = book.Description;
             this.Pages = book.Pages;
             this.CreationDate = book.CreationDate;
+
             // TODO Factory Extract ???
-            this.Author = new AuthorModel(book.Author);
+            if (book.AuthorId != null)
+            {
+                this.Author = new AuthorModel(book.Author);
+            }
+
             // TODO Factory Extract ???
-            this.Genre = new GenreModel(book.Genre);
+            if (book.GenreId != null)
+            {
+                this.Genre = new GenreModel(book.Genre);
+            }
 
             this.Picture = new PictureModel(picture);
         }

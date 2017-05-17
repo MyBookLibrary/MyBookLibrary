@@ -5,7 +5,7 @@ using BookLibrary.ViewModels.Genre;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BookLibrary.ViewModels
+namespace BookLibrary.ViewModels.Book
 {
     public class BookMainViewModel
     {
@@ -22,10 +22,23 @@ namespace BookLibrary.ViewModels
             this.CreationDate = bookModel.CreationDate;
 
             // TODO Factory Extract ???
-            this.Author = new AuthorMainViewModel(bookModel.Author.Id, bookModel.Author.FirstName, bookModel.Author.LastName);
-            
+            if (bookModel.Author != null)
+            {
+                if (bookModel.Author.Id > 0)
+                {
+                    this.Author = new AuthorMainViewModel(bookModel.Author.Id, bookModel.Author.FirstName, bookModel.Author.LastName);
+                }
+            }
+
             // TODO Factory Extract ???
-            this.Genre = new GenreMainViewModel(bookModel.Genre.Id, bookModel.Genre.Name);
+            if (bookModel.Genre != null)
+            {
+                if (bookModel.Genre.Id > 0)
+                {
+                    this.Genre = new GenreMainViewModel(bookModel.Genre.Id, bookModel.Genre.Name);
+
+                }
+            }
         }
 
         public BookMainViewModel(IBookModel bookModel, IPictureModel pictureModel)
@@ -37,10 +50,24 @@ namespace BookLibrary.ViewModels
             this.CreationDate = bookModel.CreationDate;
 
             // TODO Factory Extract ???
-            this.Author = new AuthorMainViewModel(bookModel.Author.Id, bookModel.Author.FirstName, bookModel.Author.LastName);
+            if (bookModel.Author != null)
+            {
+                if (bookModel.Author.Id > 0)
+                {
+                    this.Author = new AuthorMainViewModel(bookModel.Author.Id, bookModel.Author.FirstName, bookModel.Author.LastName);
+                }
+            }
 
             // TODO Factory Extract ???
-            this.Genre = new GenreMainViewModel(bookModel.Genre.Id, bookModel.Genre.Name);
+            if (bookModel.Genre != null)
+            {
+                if (bookModel.Genre.Id > 0)
+                {
+                    this.Genre = new GenreMainViewModel(bookModel.Genre.Id, bookModel.Genre.Name);
+
+                }
+            }
+            
             this.Picture = pictureModel;
         }
         [Required]

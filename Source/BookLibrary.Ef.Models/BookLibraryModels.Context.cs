@@ -12,6 +12,8 @@ namespace BookLibrary.Ef.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BookLibraryEntities : DbContext
     {
@@ -26,8 +28,25 @@ namespace BookLibrary.Ef.Models
         }
     
         public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
-        public virtual DbSet<Book> Books { get; set; }
+    
+        public virtual int usp_InsertBook(string title, Nullable<int> pages, Nullable<System.DateTime> creationDate)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var pagesParameter = pages.HasValue ?
+                new ObjectParameter("Pages", pages) :
+                new ObjectParameter("Pages", typeof(int));
+    
+            var creationDateParameter = creationDate.HasValue ?
+                new ObjectParameter("CreationDate", creationDate) :
+                new ObjectParameter("CreationDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertBook", titleParameter, pagesParameter, creationDateParameter);
+        }
     }
 }

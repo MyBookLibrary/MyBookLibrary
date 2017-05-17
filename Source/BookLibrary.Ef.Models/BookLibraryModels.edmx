@@ -22,9 +22,9 @@
           <Property Name="Description" Type="varchar" MaxLength="500" />
           <Property Name="Pages" Type="int" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="PictureId" Type="int" Nullable="false" />
-          <Property Name="AuthorId" Type="int" Nullable="false" />
-          <Property Name="GenreId" Type="int" Nullable="false" />
+          <Property Name="PictureId" Type="int" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="GenreId" Type="int" />
         </EntityType>
         <EntityType Name="Genres">
           <Key>
@@ -45,7 +45,7 @@
           <Property Name="Url" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Books_Authors">
-          <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+          <End Role="Authors" Type="Self.Authors" Multiplicity="0..1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Authors">
@@ -57,7 +57,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Books_Genres">
-          <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
+          <End Role="Genres" Type="Self.Genres" Multiplicity="0..1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genres">
@@ -69,7 +69,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Books_Pictures">
-          <End Role="Pictures" Type="Self.Pictures" Multiplicity="1" />
+          <End Role="Pictures" Type="Self.Pictures" Multiplicity="0..1" />
           <End Role="Books" Type="Self.Books" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pictures">
@@ -80,6 +80,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_InsertBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+          <Parameter Name="Pages" Type="int" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="BookLibraryModelStoreContainer">
           <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
@@ -102,28 +107,11 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BookLibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Author">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Books" Relationship="BookLibraryModel.FK_Books_Authors" FromRole="Author" ToRole="Book" />
-        </EntityType>
-        <EntityType Name="Genre">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Books" Relationship="BookLibraryModel.FK_Books_Genres" FromRole="Genre" ToRole="Book" />
-        </EntityType>
         <EntityContainer Name="BookLibraryEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Authors" EntityType="Self.Author" />
-          <EntitySet Name="Genres" EntityType="Self.Genre" />
-          <EntitySet Name="Pictures" EntityType="BookLibraryModel.Picture" />
+          <EntitySet Name="Authors" EntityType="BookLibraryModel.Author" />
           <EntitySet Name="Books" EntityType="BookLibraryModel.Book" />
+          <EntitySet Name="Genres" EntityType="BookLibraryModel.Genre" />
+          <EntitySet Name="Pictures" EntityType="BookLibraryModel.Picture" />
           <AssociationSet Name="FK_Books_Authors" Association="BookLibraryModel.FK_Books_Authors">
             <End Role="Author" EntitySet="Authors" />
             <End Role="Book" EntitySet="Books" />
@@ -136,7 +124,45 @@
             <End Role="Picture" EntitySet="Pictures" />
             <End Role="Book" EntitySet="Books" />
           </AssociationSet>
+          <FunctionImport Name="usp_InsertBook">
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Pages" Mode="In" Type="Int32" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Books" Relationship="BookLibraryModel.FK_Books_Authors" FromRole="Author" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Pages" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PictureId" Type="Int32" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="GenreId" Type="Int32" />
+          <NavigationProperty Name="Author" Relationship="BookLibraryModel.FK_Books_Authors" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="Genre" Relationship="BookLibraryModel.FK_Books_Genres" FromRole="Book" ToRole="Genre" />
+          <NavigationProperty Name="Picture" Relationship="BookLibraryModel.FK_Books_Pictures" FromRole="Book" ToRole="Picture" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Books" Relationship="BookLibraryModel.FK_Books_Genres" FromRole="Genre" ToRole="Book" />
+        </EntityType>
         <EntityType Name="Picture">
           <Key>
             <PropertyRef Name="Id" />
@@ -149,24 +175,8 @@
           <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Books" Relationship="BookLibraryModel.FK_Books_Pictures" FromRole="Picture" ToRole="Book" />
         </EntityType>
-        <EntityType Name="Book">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Pages" Type="Int32" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PictureId" Type="Int32" Nullable="false" />
-          <Property Name="AuthorId" Type="Int32" Nullable="false" />
-          <Property Name="GenreId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Author" Relationship="BookLibraryModel.FK_Books_Authors" FromRole="Book" ToRole="Author" />
-          <NavigationProperty Name="Genre" Relationship="BookLibraryModel.FK_Books_Genres" FromRole="Book" ToRole="Genre" />
-          <NavigationProperty Name="Picture" Relationship="BookLibraryModel.FK_Books_Pictures" FromRole="Book" ToRole="Picture" />
-        </EntityType>
         <Association Name="FK_Books_Authors">
-          <End Type="BookLibraryModel.Author" Role="Author" Multiplicity="1" />
+          <End Type="BookLibraryModel.Author" Role="Author" Multiplicity="0..1" />
           <End Type="BookLibraryModel.Book" Role="Book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Author">
@@ -178,7 +188,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Books_Genres">
-          <End Type="BookLibraryModel.Genre" Role="Genre" Multiplicity="1" />
+          <End Type="BookLibraryModel.Genre" Role="Genre" Multiplicity="0..1" />
           <End Type="BookLibraryModel.Book" Role="Book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Genre">
@@ -190,7 +200,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Books_Pictures">
-          <End Type="BookLibraryModel.Picture" Role="Picture" Multiplicity="1" />
+          <End Type="BookLibraryModel.Picture" Role="Picture" Multiplicity="0..1" />
           <End Type="BookLibraryModel.Book" Role="Book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Picture">
@@ -210,28 +220,8 @@
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="BookLibraryModel.Author">
               <MappingFragment StoreEntitySet="Authors">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Genres">
-            <EntityTypeMapping TypeName="BookLibraryModel.Genre">
-              <MappingFragment StoreEntitySet="Genres">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pictures">
-            <EntityTypeMapping TypeName="BookLibraryModel.Picture">
-              <MappingFragment StoreEntitySet="Pictures">
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="SizeMb" ColumnName="SizeMb" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -250,6 +240,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="BookLibraryModel.Genre">
+              <MappingFragment StoreEntitySet="Genres">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="BookLibraryModel.Picture">
+              <MappingFragment StoreEntitySet="Pictures">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="SizeMb" ColumnName="SizeMb" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_InsertBook" FunctionName="BookLibraryModel.Store.usp_InsertBook" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

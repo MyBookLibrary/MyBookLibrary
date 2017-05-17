@@ -13,6 +13,8 @@ namespace BookLibrary.Data.Provider.Contracts
 {
     public interface IBookLibraryDbContext : IDisposable, IEfDbContextSaveChanges
     {
+        Database Db { get; }
+
         IDbSet<Genre> Genre { get; set; }
 
         IDbSet<Author> Author { get; set; }

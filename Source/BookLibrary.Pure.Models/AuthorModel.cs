@@ -18,6 +18,11 @@ namespace BookLibrary.Pure.Models
         // IAuthor is the Ef model interface
         public AuthorModel(IAuthor author)
         {
+            if(author == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.Id = author.Id;
             this.FirstName = author.FirstName;
             this.LastName = author.LastName;        

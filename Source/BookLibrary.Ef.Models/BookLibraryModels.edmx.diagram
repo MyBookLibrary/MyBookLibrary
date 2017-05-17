@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8e344bc59be24e8a81829497e3cd742e" Name="Diagram1">
-        <EntityTypeShape EntityType="BookLibraryModel.Author" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookLibraryModel.Genre" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookLibraryModel.Picture" Width="1.5" PointX="5.375" PointY="1" />
-        <EntityTypeShape EntityType="BookLibraryModel.Book" Width="1.5" PointX="7.625" PointY="2.375" />
+        <EntityTypeShape EntityType="BookLibraryModel.Author" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="BookLibraryModel.Book" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="BookLibraryModel.Genre" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="BookLibraryModel.Picture" Width="1.5" PointX="0.75" PointY="7.625" />
         <AssociationConnector Association="BookLibraryModel.FK_Books_Authors" />
         <AssociationConnector Association="BookLibraryModel.FK_Books_Genres" />
         <AssociationConnector Association="BookLibraryModel.FK_Books_Pictures" />

@@ -19,6 +19,14 @@ namespace BookLibrary.Data.Provider
             this.Configuration.LazyLoadingEnabled = true;
         }
 
+        public Database Db
+        {
+            get
+            {
+                return base.Database;
+            }
+        }
+
         public IDbSet<Author> Author { get; set; }
 
         public IDbSet<Genre> Genre { get; set; }

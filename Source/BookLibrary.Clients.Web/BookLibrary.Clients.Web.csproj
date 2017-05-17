@@ -197,8 +197,8 @@
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\Author\AuthorMainViewModel.cs" />
     <Compile Include="ViewModels\Author\AuthorSelectListViewModel.cs" />
-    <Compile Include="ViewModels\BookCreateViewModel.cs" />
-    <Compile Include="ViewModels\BookMainViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookCreateViewModel.cs" />
+    <Compile Include="ViewModels\Book\BookMainViewModel.cs" />
     <Compile Include="ViewModels\Genre\GenreMainViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,6 +206,7 @@
     <Compile Include="ViewModels\Picture\PictureMainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\book-default.png" />
     <Content Include="Assets\Images\logo.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
