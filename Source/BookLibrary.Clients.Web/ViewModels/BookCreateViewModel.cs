@@ -1,11 +1,15 @@
 ﻿using BookLibrary.Constants.Models;
 using BookLibrary.ViewModels.Author;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace BookLibrary.ViewModels
 {
-    public class BookMainViewModel
+    public class BookCreateViewModel
     {
         [Required]
         [Display(Name = "Id")]
@@ -27,22 +31,15 @@ namespace BookLibrary.ViewModels
         [Display(Name = "Creation Date")]
         public DateTime CreationDate { get; set; }
 
-        //[Required]
-        //[Display(Name = "AuthorId")]
-        //public int AuthorId { get; set; }
+        [Display(Name = "Select Author")]
+        public int SelectedAuthorId { get; set; }
+        public IEnumerable<SelectListItem> AuthorSelectList { get; set; }
 
-        //[Required]
-        //[Display(Name = "GenreId")]
-        //public int GenreId { get; set; }
+        [Display(Name = "Select Genre")]
+        public int SelectedGenreId { get; set; }
+        public IEnumerable<SelectListItem> GenreSelectList { get; set; }
 
-        [Display(Name = "Author")]
-        public AuthorMainViewModel Author { get; set; }
-
-        [Display(Name = "Genre")]
-        public GenreMainViewModel Genre { get; set; }
-
-        [Display(Name = "Book")]
+        [Display(Name ="Create Book")]
         public string ModelName { get; set; }
-
     }
 }

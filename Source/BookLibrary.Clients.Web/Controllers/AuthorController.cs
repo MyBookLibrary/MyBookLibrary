@@ -1,25 +1,25 @@
-﻿using BookLibrary.App_Start;
-using BookLibrary.Data.Provider;
-using BookLibrary.Data.Provider.Operations;
-using BookLibrary.Data.Services;
-using BookLibrary.Data.Services.Contracts;
-using BookLibrary.Ef.Models;
-using BookLibrary.ViewModels;
-using Ninject;
+﻿using BookLibrary.Data.Services.Contracts;
+using BookLibrary.Pure.Models;
+using BookLibrary.ViewModels.Author;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ninject;
+using BookLibrary.App_Start;
+using BookLibrary.Data.Services;
+using BookLibrary.Data.Provider;
+using BookLibrary.Data.Provider.Operations;
+using BookLibrary.Ef.Models;
 
 namespace BookLibrary.Controllers
 {
-    public class BookController : Controller
+    public class AuthorController : Controller
     {
-        private readonly IBookService bookService;
         private readonly IAuthorService authorService;
 
-        public BookController()
+        public AuthorController()
         {
             this.authorService = NinjectWebCommon.Kernel.Get<IAuthorService>();
             //BookLibraryDbContext dbContext = new BookLibraryDbContext();
@@ -27,45 +27,33 @@ namespace BookLibrary.Controllers
             //EfCrudOperatons<Author> crudOperations = new EfCrudOperatons<Author>(dbContext);
 
             //this.authorService = new AuthorService(crudOperations, dbContextSaveChanges);
-
-            this.bookService = NinjectWebCommon.Kernel.Get<IBookService>();
         }
 
-        // GET: Book
+        // GET: Author
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Book/Details/5
+        // GET: Author/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Book/Create
+        // GET: Author/Create
         public ActionResult Create()
         {
-            BookCreateViewModel modelToReturn = new BookCreateViewModel();
-
-            // TODO Refactor if better option found
-            AuthorController ac = new AuthorController();
-
-            modelToReturn.CreationDate = DateTime.Now;
-            modelToReturn.AuthorSelectList = ac.GetAuthorSelectList();
-            modelToReturn.GenreSelectList = ac.GetAuthorSelectList();
-
-            return View(modelToReturn);
+            return View();
         }
 
-        // POST: Book/Create
+        // POST: Author/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -74,13 +62,13 @@ namespace BookLibrary.Controllers
             }
         }
 
-        // GET: Book/Edit/5
+        // GET: Author/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Book/Edit/5
+        // POST: Author/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -96,13 +84,13 @@ namespace BookLibrary.Controllers
             }
         }
 
-        // GET: Book/Delete/5
+        // GET: Author/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Book/Delete/5
+        // POST: Author/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -116,6 +104,20 @@ namespace BookLibrary.Controllers
             {
                 return View();
             }
+        }
+
+        public IEnumerable<SelectListItem> GetAuthorSelectList()
+        {
+            IEnumerable<AuthorModel> authors = this.authorService.GetAllAuthors();
+            IEnumerable<SelectListItem> authorsToReturn = authors
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.FirstName
+                });
+
+            
+            return new SelectList(authorsToReturn, "Value", "Text");
         }
     }
 }

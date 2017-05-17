@@ -91,6 +91,10 @@
       <Project>{31177505-BD9C-4384-A6EC-098C2E7D137E}</Project>
       <Name>BookLibrary.Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BookLibrary.Contracts\BookLibrary.Contracts.csproj">
+      <Project>{7652C899-38D6-4CCC-81D9-CBCFB4E49DA0}</Project>
+      <Name>BookLibrary.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BookLibraryModels.edmx">

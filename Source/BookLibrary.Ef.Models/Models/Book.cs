@@ -1,4 +1,5 @@
-﻿using BookLibrary.Ef.Models.Contracts;
+﻿using BookLibrary.Contracts;
+using BookLibrary.Ef.Models.Contracts;
 using BookLibrary.Ef.Models.MetaData;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace BookLibrary.Ef.Models
 {
     [MetadataType(typeof(BookMetaData))]
-    public partial class Book : IBook
+    public partial class Book : IBook, IHasIntId
     {
     }
 }

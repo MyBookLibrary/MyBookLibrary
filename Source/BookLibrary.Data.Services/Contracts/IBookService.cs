@@ -1,5 +1,4 @@
 ﻿using BookLibrary.Contracts;
-using BookLibrary.Ef.Models.Contracts;
 using BookLibrary.Pure.Models;
 using System.Collections.Generic;
 
