@@ -13,6 +13,7 @@ namespace BookLibrary.ViewModels.Author
         {
         }
 
+        // Used for mapping
         public AuthorMainViewModel(int id, string firstName, string lastName)
         {
             this.Id = id;

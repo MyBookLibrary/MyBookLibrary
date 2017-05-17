@@ -12,6 +12,7 @@ using BookLibrary.Data.Services;
 using BookLibrary.Data.Provider;
 using BookLibrary.Data.Provider.Operations;
 using BookLibrary.Ef.Models;
+using BookLibrary.Contracts;
 
 namespace BookLibrary.Controllers
 {
@@ -48,18 +49,34 @@ namespace BookLibrary.Controllers
         }
 
         // POST: Author/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id, FirstName, LastName")] AuthorMainViewModel authorMainViewModel)
         {
-            try
+            if (ModelState["Id"] != null)
             {
-                // TODO: Add insert logic here
+                if(ModelState["Id"].Errors.Count > 0)
+                {
+                    ModelState["Id"].Errors.Clear();
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                // TODO refactore when mapper created
+                IAuthorModel authorModelToinsert = new AuthorModel();
+                authorModelToinsert.Id = authorMainViewModel.Id;
+                authorModelToinsert.FirstName = authorMainViewModel.FirstName;
+                authorModelToinsert.LastName = authorMainViewModel.LastName;
+
+                this.authorService.InsertAuthor(authorModelToinsert);
+
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(authorMainViewModel);
         }
 
         // GET: Author/Edit/5
