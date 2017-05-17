@@ -167,5 +167,18 @@ namespace BookLibrary.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IEnumerable<SelectListItem> GetGenreSelectList()
+        {
+            IEnumerable<GenreModel> genres = this.genreService.GetAllGenres();
+            IEnumerable<SelectListItem> genresToReturn = genres
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name
+                });
+
+            return new SelectList(genresToReturn, "Value", "Text");
+        }
     }
 }

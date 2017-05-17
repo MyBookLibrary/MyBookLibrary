@@ -22,12 +22,6 @@ namespace BookLibrary.Controllers
         public BookController()
         {
             this.authorService = NinjectWebCommon.Kernel.Get<IAuthorService>();
-            //BookLibraryDbContext dbContext = new BookLibraryDbContext();
-            //EfDbContextSaveChanges dbContextSaveChanges = new EfDbContextSaveChanges(dbContext);
-            //EfCrudOperatons<Author> crudOperations = new EfCrudOperatons<Author>(dbContext);
-
-            //this.authorService = new AuthorService(crudOperations, dbContextSaveChanges);
-
             this.bookService = NinjectWebCommon.Kernel.Get<IBookService>();
         }
 
@@ -49,11 +43,12 @@ namespace BookLibrary.Controllers
             BookCreateViewModel modelToReturn = new BookCreateViewModel();
 
             // TODO Refactor if better option found
-            AuthorController ac = new AuthorController();
+            AuthorController authorController = new AuthorController();
+            GenreController genreController = new GenreController();
 
             modelToReturn.CreationDate = DateTime.Now;
-            modelToReturn.AuthorSelectList = ac.GetAuthorSelectList();
-            modelToReturn.GenreSelectList = ac.GetAuthorSelectList();
+            modelToReturn.AuthorSelectList = authorController.GetAuthorSelectList();
+            modelToReturn.GenreSelectList = genreController.GetGenreSelectList();
 
             return View(modelToReturn);
         }
