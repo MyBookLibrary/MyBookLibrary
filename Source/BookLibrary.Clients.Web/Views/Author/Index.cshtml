@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BookLibrary.ViewModels.Author.AuthorMainViewModel>
+     
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="raw" style="margin-top: 20px;">
+        <div class="col-md-2 table-bordered-no">
+            <a href="@Url.Action("Index", "Book", null)" class="btn btn-primary">
+                <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                Books
+            </a>
+        </div>
+        <div class="col-md-6 table-bordered-no">
+            <h2 class="red-fg">Manage authors</h2>
+        </div>
+    </div>
+    <div class="raw">
+        <div class="col-md-8 table-bordered-no">
+
+            <table class="table table-striped" style="margin-top:20px;">
+                <colgroup>
+                    <col class="col-md-5">
+                    <col class="col-md-7">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th style="background-color:lightsteelblue; color: white;">
+                            @Html.DisplayNameFor(model => model.FullName)
+                        </th>
+                        <th style="background-color:lightsteelblue;"></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>                               
+                                <a href="@Url.Action("Edit", "Author", new { id = item.Id })" class="btn btn-warning">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    Edit
+                                </a>
+                                <a href="@Url.Action("ViewDeleteConfirm", "Author", new { id = item.Id })" class="btn btn-danger modal-link">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td style="background-color:lightsteelblue"></td>
+                        <td style="background-color:lightsteelblue">
+                            <a href="@Url.Action("Create", "Author")" class="btn btn-primary pull-right">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                Create New
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+

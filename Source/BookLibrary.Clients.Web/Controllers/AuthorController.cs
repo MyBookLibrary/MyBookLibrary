@@ -27,15 +27,20 @@ namespace BookLibrary.Controllers
         // GET: Author
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<AuthorModel> authors = this.authorService.GetAllAuthors();
+
+            // TODO Refactor when Mapper created
+            IList<AuthorMainViewModel> authorsToReturn = new List<AuthorMainViewModel>();
+            foreach(AuthorModel author in authors)
+            {
+                AuthorMainViewModel a = new AuthorMainViewModel(author.Id, author.FirstName, author.LastName);
+                authorsToReturn.Add(a);
+            }
+            
+            return View(authorsToReturn.AsEnumerable());
         }
 
-        // GET: Author/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+        
         // GET: Author/Create
         public ActionResult Create()
         {

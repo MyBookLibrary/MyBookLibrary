@@ -9,6 +9,17 @@ namespace BookLibrary.ViewModels.Author
 {
     public class AuthorMainViewModel
     {
+        public AuthorMainViewModel()
+        {
+        }
+
+        public AuthorMainViewModel(int id, string firstName, string lastName)
+        {
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         [Required]
         [Display(Name = "Id")]
         [Range(Consts.Author.Id.MinValue, Consts.Author.Id.MaxValue, ErrorMessage = Consts.Author.Id.ErrorMessage)]
@@ -33,5 +44,8 @@ namespace BookLibrary.ViewModels.Author
                 return this.FirstName + " " + this.LastName;
             }
         }
+
+        [Display(Name = "Author")]
+        public string ModelName { get; set; }
     }
 }
