@@ -1,16 +1,13 @@
-﻿using BookLibrary.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookLibrary.Ef.Models.Contracts
+namespace BookLibrary.Contracts
 {
-    public interface IPicture : IHasIntId
+    public interface IPictureModel : IHasIntId
     {
-        int Id { get; set; }
-
         string Name { get; set; }
 
         Nullable<int> Width { get; set; }
