@@ -13,6 +13,7 @@ using BookLibrary.Data.Provider;
 using BookLibrary.Data.Provider.Operations;
 using BookLibrary.Ef.Models;
 using BookLibrary.Contracts;
+using System.Net;
 
 namespace BookLibrary.Controllers
 {
@@ -82,7 +83,24 @@ namespace BookLibrary.Controllers
         // GET: Author/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            IAuthorModel authorModel = this.authorService.GetAuthorById(id);
+            if (authorModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            // TODO refactore when mapper created ???
+            AuthorMainViewModel authorMainViewModel = new AuthorMainViewModel(
+                authorModel.Id,
+                authorModel.FirstName,
+                authorModel.LastName);
+
+            return View(authorMainViewModel);
         }
 
         // POST: Author/Edit/5
