@@ -40,11 +40,6 @@ namespace BookLibrary.Data.Services
             this.dbContextSaveChanges = dbContextSaveChanges;
         }
 
-        public void DeleteAuthorById(int? id)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<AuthorModel> GetAllAuthors()
         {
             IList<AuthorModel> authorsToReturn = null;
@@ -72,11 +67,13 @@ namespace BookLibrary.Data.Services
 
         public IEnumerable<IAuthorModel> GetAllAuthorsSortedByFirstName()
         {
+            // TODO implement or delete
             throw new NotImplementedException();
         }
 
         public IEnumerable<IAuthorModel> GetAllAuthorsSortedById()
         {
+            // TODO implement or delete
             throw new NotImplementedException();
         }
 
@@ -145,6 +142,23 @@ namespace BookLibrary.Data.Services
             this.dbContextSaveChanges.SaveChanges();
 
             return authorModel;
+        }
+
+        public void DeleteAuthorById(int? id)
+        {
+            if (id == null)
+            {
+                string errorMessage = string.Format(Consts.DeleteData.ErrorMessage.DeleteByIdIsPossibleOnlyWithPositiveParameter, "null");
+                throw new ArgumentNullException(errorMessage);
+            }
+            if (id <= 0)
+            {
+                string errorMessage = string.Format(Consts.DeleteData.ErrorMessage.DeleteByIdIsPossibleOnlyWithPositiveParameter, id);
+                throw new ArgumentException(errorMessage);
+            }
+
+            this.authorBaseOperatonsProvider.Delete(id);
+            this.dbContextSaveChanges.SaveChanges();
         }
     }
 }

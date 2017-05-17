@@ -199,6 +199,7 @@
     <Compile Include="ViewModels\BookCreateViewModel.cs" />
     <Compile Include="ViewModels\BookMainViewModel.cs" />
     <Compile Include="ViewModels\GenreMainViewModel.cs" />
+    <Compile Include="ViewModels\Genre\GenreMainViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -238,7 +239,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -265,6 +265,7 @@
     <Content Include="Views\Author\Index.cshtml" />
     <Content Include="Views\Author\Create.cshtml" />
     <Content Include="Views\Author\Edit.cshtml" />
+    <Content Include="Views\Author\_DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

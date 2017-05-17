@@ -14,6 +14,7 @@ using BookLibrary.Data.Provider.Operations;
 using BookLibrary.Ef.Models;
 using BookLibrary.Contracts;
 using System.Net;
+using BookLibrary.Constants;
 
 namespace BookLibrary.Controllers
 {
@@ -112,7 +113,7 @@ namespace BookLibrary.Controllers
             if (ModelState.IsValid)
             {
                 // TODO refactore when mapper created
-                AuthorModel authorModelToUpdate = new AuthorModel();
+                IAuthorModel authorModelToUpdate = new AuthorModel();
                 authorModelToUpdate.Id = authorMainViewModel.Id;
                 authorModelToUpdate.FirstName = authorMainViewModel.FirstName;
                 authorModelToUpdate.LastName = authorMainViewModel.LastName;
@@ -126,25 +127,53 @@ namespace BookLibrary.Controllers
         }
 
         // GET: Author/Delete/5
-        public ActionResult Delete(int id)
+        public PartialViewResult ViewDeleteConfirm(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                string errorMessage = string.Format(Consts.DeleteData.ErrorMessage.DeleteByIdIsPossibleOnlyWithPositiveParameter);
+                throw new ArgumentNullException(errorMessage);
+            }
+            if (id <= 0)
+            {
+                string errorMessage = string.Format(Consts.DeleteData.ErrorMessage.DeleteByIdIsPossibleOnlyWithPositiveParameter);
+                throw new ArgumentException(errorMessage);
+            }
+
+            IAuthorModel authorModel = this.authorService.GetAuthorById(id);
+
+            if (authorModel == null)
+            {
+                string errorMessage = string.Format(Consts.SelectData.ErrorMessage.NoItemFoundByTheGivenId, "Author", id);
+                throw new ArgumentNullException(errorMessage);
+            }
+            AuthorMainViewModel authorMainViewModel = new AuthorMainViewModel();
+            authorMainViewModel.Id = authorModel.Id;
+            authorMainViewModel.FirstName = authorModel.FirstName;
+            authorMainViewModel.LastName = authorModel.LastName;
+
+            return PartialView("_DeleteConfirm", authorMainViewModel);
         }
 
         // POST: Author/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? id)
         {
-            try
+            if (id == null)
             {
-                // TODO: Add delete logic here
+                string errorMessage = string.Format(Consts.DeleteData.ErrorMessage.DeleteByIdIsPossibleOnlyWithPositiveParameter);
+                throw new ArgumentNullException(errorMessage);
+            }
+            if (id <= 0)
+            {
+                string errorMessage = string.Format(Consts.DeleteData.ErrorMessage.DeleteByIdIsPossibleOnlyWithPositiveParameter);
+                throw new ArgumentException(errorMessage);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            this.authorService.DeleteAuthorById(id);
+
+            return RedirectToAction("Index");
         }
 
         public IEnumerable<SelectListItem> GetAuthorSelectList()
@@ -156,8 +185,7 @@ namespace BookLibrary.Controllers
                     Value = x.Id.ToString(),
                     Text = x.FullName
                 });
-
-            
+                        
             return new SelectList(authorsToReturn, "Value", "Text");
         }
     }
