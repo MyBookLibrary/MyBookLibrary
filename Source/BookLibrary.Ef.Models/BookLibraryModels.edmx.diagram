@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="BookLibraryModel.Genre" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="BookLibraryModel.FK_Books_Authors" ManuallyRouted="false" />
         <AssociationConnector Association="BookLibraryModel.FK_Books_Genres" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BookLibraryModel.sysdiagram" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

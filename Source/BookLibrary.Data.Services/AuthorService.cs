@@ -87,7 +87,21 @@ namespace BookLibrary.Data.Services
 
         public int InsertAuthor(IAuthorModel authorModel)
         {
-            throw new NotImplementedException();
+            if (authorModel == null)
+            {
+                string errorMessage = nameof(authorModel);
+                throw new ArgumentNullException(errorMessage);
+            }
+
+            // TODO create MyDbModelsMapper.AuthorModel2Author
+            Author authorToInsert = new Author();
+            authorToInsert.FirstName = authorModel.FirstName;
+            authorToInsert.LastName = authorModel.LastName;
+
+            int insertedAuthorId = this.authorBaseOperatonsProvider.Insert(authorToInsert);
+            this.dbContextSaveChanges.SaveChanges();
+
+            return insertedAuthorId;
         }
 
         public IAuthorModel UpdateAuthor(IAuthorModel authorModel)

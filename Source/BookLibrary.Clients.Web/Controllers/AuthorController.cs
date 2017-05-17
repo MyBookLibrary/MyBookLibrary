@@ -71,7 +71,7 @@ namespace BookLibrary.Controllers
                 authorModelToinsert.FirstName = authorMainViewModel.FirstName;
                 authorModelToinsert.LastName = authorMainViewModel.LastName;
 
-                this.authorService.InsertAuthor(authorModelToinsert);
+                int id = this.authorService.InsertAuthor(authorModelToinsert);
 
                 return RedirectToAction("Index");
             }

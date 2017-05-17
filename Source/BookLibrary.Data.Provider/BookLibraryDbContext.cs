@@ -43,6 +43,12 @@ namespace BookLibrary.Data.Provider
             //Have you tried explicitly specifying the StoreGeneratedPattern?
             // modelBuilder.Entity<BOB>().HasKey(p => p.Id).Property(p => p.Id).HasDatabaseGenerationOption(DatabaseGenerationOption.None); 
             // modelBuilder.Entity<BOB>().ToTable("BOB");
+            modelBuilder.Entity<Author>()
+                .HasKey(c => c.Id)
+                .Property(p => p.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            modelBuilder.Entity<Author>().ToTable("Authors");
+
             modelBuilder.Entity<Genre>()
                 .HasKey(c => c.Id)
                 .Property(p => p.Id)
