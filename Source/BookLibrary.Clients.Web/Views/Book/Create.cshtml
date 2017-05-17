@@ -18,7 +18,7 @@
     <div class="raw">
         <div class="col-md-8">
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "createBookForm" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "createForm" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -148,7 +148,7 @@
         }
 
         $(document).ready(function () {
-            $('#Name').on("input", function () {
+            $('#Title').on("input", function () {
                 validateForm();
             });
         });

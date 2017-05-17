@@ -22,11 +22,6 @@ namespace BookLibrary.Controllers
         public AuthorController()
         {
             this.authorService = NinjectWebCommon.Kernel.Get<IAuthorService>();
-            //BookLibraryDbContext dbContext = new BookLibraryDbContext();
-            //EfDbContextSaveChanges dbContextSaveChanges = new EfDbContextSaveChanges(dbContext);
-            //EfCrudOperatons<Author> crudOperations = new EfCrudOperatons<Author>(dbContext);
-
-            //this.authorService = new AuthorService(crudOperations, dbContextSaveChanges);
         }
 
         // GET: Author
@@ -113,7 +108,7 @@ namespace BookLibrary.Controllers
                 .Select(x => new SelectListItem
                 {
                     Value = x.Id.ToString(),
-                    Text = x.FirstName
+                    Text = x.FullName
                 });
 
             

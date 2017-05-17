@@ -11,5 +11,7 @@ namespace BookLibrary.Contracts
         string FirstName { get; set; }
 
         string LastName { get; set; }
+
+        string FullName { get; }
     }
 }
