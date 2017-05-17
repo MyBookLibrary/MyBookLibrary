@@ -29,5 +29,6 @@ namespace BookLibrary.Ef.Models
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Picture> Pictures { get; set; }
     }
 }

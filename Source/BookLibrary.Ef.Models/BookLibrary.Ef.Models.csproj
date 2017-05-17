@@ -75,15 +75,21 @@
     <Compile Include="Contracts\IAuthor.cs" />
     <Compile Include="Contracts\IBook.cs" />
     <Compile Include="Contracts\IGenre.cs" />
+    <Compile Include="Contracts\IPicture.cs" />
     <Compile Include="Genre.cs">
       <DependentUpon>BookLibraryModels.tt</DependentUpon>
     </Compile>
     <Compile Include="MetaData\AuthorMetaData.cs" />
     <Compile Include="MetaData\BookMetaData.cs" />
     <Compile Include="MetaData\GenreMetaData.cs" />
+    <Compile Include="MetaData\PictureMetaData.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Picture.cs" />
+    <Compile Include="Picture.cs">
+      <DependentUpon>BookLibraryModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>BookLibraryModels.tt</DependentUpon>

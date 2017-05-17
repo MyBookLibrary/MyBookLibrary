@@ -27,6 +27,10 @@ namespace BookLibrary.Ef.Models.MetaData
         [MinLength(Consts.Book.Description.MinLength, ErrorMessage = Consts.Book.Description.ErrorMessageMinLength)]
         public string Description { get; set; }
 
+        [Display(Name = "Pages")]
+        [Range(Consts.Book.Pages.MinValue, Consts.Book.Pages.MaxValue, ErrorMessage = Consts.Book.Pages.ErrorMessage)]
+        public int Pages { get; set; }
+
         [Required]
         [Display(Name = "Creation Date")]
         public DateTime CreationDate { get; set; }
@@ -39,9 +43,12 @@ namespace BookLibrary.Ef.Models.MetaData
         [Display(Name = "GenreId")]
         public int GenreId { get; set; }
 
+        [Required]
+        [Display(Name = "PictureId")]
+        public int PictureId { get; set; }
+
         public Author Author { get; set; }
 
         public Genre Genre { get; set; }
-
     }
 }

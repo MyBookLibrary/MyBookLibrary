@@ -27,10 +27,17 @@ namespace BookLibrary.Constants.Models
 
             public struct Description
             {
-                public const int MaxLength = 50;
+                public const int MaxLength = 500;
                 public const int MinLength = 2;
                 public const string ErrorMessageMaxLength = "Book description length should be less than " + "500" + " symbols.";
                 public const string ErrorMessageMinLength = "Book description length should be more than " + "2" + " symbols.";
+            }
+
+            public struct Pages
+            {
+                public const int MaxValue = int.MaxValue;
+                public const int MinValue = 1;
+                public const string ErrorMessage = "Book pages value should be positive integer numnber.";
             }
         };
     }
