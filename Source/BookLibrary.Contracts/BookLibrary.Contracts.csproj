@@ -44,6 +44,8 @@
     <Compile Include="IBookModel.cs" />
     <Compile Include="IGenreModel.cs" />
     <Compile Include="IHasIntId.cs" />
+    <Compile Include="IHasPicture.cs" />
+    <Compile Include="IPictureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

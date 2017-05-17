@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookLibrary.Contracts
 {
-    public interface IBookModel : IHasIntId
+    public interface IBookModel : IHasIntId, IHasPicture
     {
         string Title { get; set; }
 

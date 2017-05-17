@@ -25,7 +25,7 @@ namespace BookLibrary.Pure.Models
             // TODO Factory Extract ???
             this.Author = new AuthorModel(book.Author);
             // TODO Factory Extract ???
-            this.Genre = new GenreModel(book.Genre);
+            this.Genre = new GenreModel(book.Genre);            
         }
 
         public int Id { get; set; }
@@ -39,5 +39,7 @@ namespace BookLibrary.Pure.Models
         public IAuthorModel Author { get; set; }
         
         public IGenreModel Genre { get; set; }
+
+        public IPictureModel Picture { get; set; }
     }
 }
