@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -15,6 +16,7 @@ namespace BookLibrary.Data.Provider.Operations
     public class EfCrudOperatons<T> : IEfCrudOperatons<T> where T : class, IHasIntId
     {
         private readonly IBookLibraryDbContext context;
+        private readonly Database db;
         private readonly DbSet<T> dbSet;
 
         public EfCrudOperatons(IBookLibraryDbContext context)
@@ -26,6 +28,7 @@ namespace BookLibrary.Data.Provider.Operations
             }
 
             this.context = context;
+            this.db = this.context.Db;
             this.dbSet = this.context.Set<T>();
 
             if (this.dbSet == null)
@@ -48,6 +51,14 @@ namespace BookLibrary.Data.Provider.Operations
             get
             {
                 return this.dbSet;
+            }
+        }
+
+        public Database Db
+        {
+            get
+            {
+                return this.db;
             }
         }
 
@@ -191,6 +202,22 @@ namespace BookLibrary.Data.Provider.Operations
             }
 
             this.Delete(entity);
+        }
+
+        public void ExecuteStoredProcedure(string spName, SqlParameter sqlParam1, SqlParameter sqlParam2, SqlParameter sqlParam3, SqlParameter sqlParam4, SqlParameter sqlParam5, SqlParameter sqlParam6, SqlParameter sqlParam7)
+        {
+            StringBuilder sqlCommand = new StringBuilder();
+
+            sqlCommand.Append("EXECUTE " + spName);
+            sqlCommand.Append(" " + sqlParam1.ParameterName);
+            sqlCommand.Append(", " + sqlParam2.ParameterName);
+            sqlCommand.Append(", " + sqlParam3.ParameterName);
+            sqlCommand.Append(", " + sqlParam4.ParameterName);
+            sqlCommand.Append(", " + sqlParam5.ParameterName);
+            sqlCommand.Append(", " + sqlParam6.ParameterName);
+            sqlCommand.Append(", " + sqlParam7.ParameterName);
+
+            this.Db.ExecuteSqlCommand(sqlCommand.ToString(), sqlParam1, sqlParam2, sqlParam3, sqlParam4, sqlParam5, sqlParam6, sqlParam7);
         }
 
         private int GetMaxId()

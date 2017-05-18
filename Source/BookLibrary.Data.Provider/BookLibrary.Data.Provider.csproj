@@ -56,6 +56,7 @@
     <Compile Include="Contracts\IEfStoredProcedures.cs" />
     <Compile Include="Operations\EfCrudOperatons.cs" />
     <Compile Include="Operations\EfDbContextSaveChanges.cs" />
+    <Compile Include="Operations\EfStoredProcedures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

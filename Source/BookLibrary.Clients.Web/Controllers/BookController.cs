@@ -113,11 +113,7 @@ namespace BookLibrary.Controllers
 
                     bookModelToInsert.PictureId = picture.Id;
                 }
-
-                //IAuthorModel authorModel = this.authorService.GetAuthorById(bookCreateViewModel.SelectedAuthorId);
-                //IGenreModel genreModel = this.genreService.GetGenreById(bookCreateViewModel.SelectedGenreId);
-                //bookModelToInsert.Author = authorModel;
-                //bookModelToInsert.Genre = genreModel;
+                
                 bookModelToInsert.AuthorId = bookCreateViewModel.SelectedAuthorId;
                 bookModelToInsert.GenreId = bookCreateViewModel.SelectedGenreId;
 

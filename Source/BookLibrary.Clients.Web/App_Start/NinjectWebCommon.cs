@@ -72,10 +72,11 @@ namespace BookLibrary.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            // Data provider
+            // Data providers
             kernel.Bind<IBookLibraryDbContext>().To<BookLibraryDbContext>().InRequestScope();
             kernel.Bind<IEfDbContextSaveChanges>().To<EfDbContextSaveChanges>();
             kernel.Bind(typeof(IEfCrudOperatons<>)).To(typeof(EfCrudOperatons<>));
+            //kernel.Bind(typeof(IEfStoredProcedures<>)).To(typeof(EfStoredProcedures<>));
 
             // Auth services
             // TODO

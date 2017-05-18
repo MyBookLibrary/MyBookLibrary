@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -25,5 +26,14 @@ namespace BookLibrary.Data.Provider.Contracts
         void Delete(T entity);
 
         void Delete(int? id);
+
+        void ExecuteStoredProcedure(string spName,
+            SqlParameter sqlParam1,
+            SqlParameter sqlParam2,
+            SqlParameter sqlParam3,
+            SqlParameter sqlParam4,
+            SqlParameter sqlParam5,
+            SqlParameter sqlParam6,
+            SqlParameter sqlParam7);
     }
 }

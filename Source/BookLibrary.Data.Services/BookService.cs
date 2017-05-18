@@ -8,6 +8,8 @@ using BookLibrary.Pure.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace BookLibrary.Data.Services
@@ -19,6 +21,7 @@ namespace BookLibrary.Data.Services
 
         public BookService(IEfCrudOperatons<Book> bookBaseOperatonsProvider, IEfDbContextSaveChanges dbContextSaveChanges)
         {
+            // TODO refactore or remove
             if (bookBaseOperatonsProvider == null && dbContextSaveChanges == null)
             {
                 string errorMessage = string.Format(Consts.Constuctor.ErrorMessage.AnInstanceOfObjectIsRequiredToConstructClass, "EfCrudOperatons<Book> and EfDbContextSaveChanges", "BookService");
@@ -127,19 +130,48 @@ namespace BookLibrary.Data.Services
             }
 
             // TODO create MyDbModelsMapper.BookModel2Book
-            Book bookToInsert = new Book();
-            bookToInsert.Title = bookModel.Title;
-            bookToInsert.Description = bookModel.Description;
-            bookToInsert.Pages = bookModel.Pages;
-            bookToInsert.CreationDate = bookModel.CreationDate;
+            //Book bookToInsert = new Book();
+            //bookToInsert.Title = bookModel.Title;
+            //bookToInsert.Description = bookModel.Description;
+            //bookToInsert.Pages = bookModel.Pages;
+            //bookToInsert.CreationDate = bookModel.CreationDate;
 
-            bookToInsert.AuthorId = bookModel.AuthorId;
-            bookToInsert.GenreId = bookModel.GenreId;
-            bookToInsert.PictureId = bookModel.PictureId;
+            //bookToInsert.AuthorId = bookModel.AuthorId;
+            //bookToInsert.GenreId = bookModel.GenreId;
+            //bookToInsert.PictureId = bookModel.PictureId;
 
-            // TODO change to return BookModel
-            int newBookId = this.bookBaseOperatonsProvider.Insert(bookToInsert, DatabaseGeneratedOption.Identity);
+            //int newBookId = this.bookBaseOperatonsProvider.Insert(bookToInsert, DatabaseGeneratedOption.Identity);
+
+            // TODO change to return BookModel and optimize insert with sp
+            string spName = "[dbo].[usp_InsertBook]";
+            string param1Key = "@Title";
+            string param2Key = "@Description";
+            string param3Key = "@Pages";
+            string param4Key = "@CreationDate";
+            string param5Key = "@AuthorId";
+            string param6Key = "@GenreId";
+            string param7Key = "@PictureId";
+
+            SqlParameter sqlParam1 = new SqlParameter(param1Key, SqlDbType.VarChar);
+            SqlParameter sqlParam2 = new SqlParameter(param2Key, SqlDbType.VarChar);
+            SqlParameter sqlParam3 = new SqlParameter(param3Key, SqlDbType.Int);
+            SqlParameter sqlParam4 = new SqlParameter(param4Key, SqlDbType.DateTime);
+            SqlParameter sqlParam5 = new SqlParameter(param5Key, SqlDbType.Int);
+            SqlParameter sqlParam6 = new SqlParameter(param6Key, SqlDbType.Int);
+            SqlParameter sqlParam7 = new SqlParameter(param7Key, SqlDbType.Int);
+
+            sqlParam1.Value = bookModel.Title;
+            sqlParam2.Value = bookModel.Description;
+            sqlParam3.Value = bookModel.Pages;
+            sqlParam4.Value = bookModel.CreationDate;
+            sqlParam5.Value = bookModel.AuthorId;
+            sqlParam6.Value = bookModel.GenreId;
+            sqlParam7.Value = bookModel.PictureId;
+
+            this.bookBaseOperatonsProvider.ExecuteStoredProcedure(spName, sqlParam1, sqlParam2, sqlParam3, sqlParam4, sqlParam5, sqlParam6, sqlParam7);
             this.dbContextSaveChanges.SaveChanges();
+
+            int newBookId = 1;
 
             return newBookId;
         }
