@@ -19,7 +19,7 @@ database and viewing list of available books after logging in the system.
 
 ### The home page
 
-![Cover photo](./Documentation/Images/Screenshots/Home.jpg) 
+![Cover photo](./Documentation/Images/Screenshots/Home.JPG) 
 
 ### The books page
 
