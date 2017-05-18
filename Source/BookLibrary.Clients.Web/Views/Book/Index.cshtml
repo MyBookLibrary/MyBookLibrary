@@ -12,8 +12,8 @@
                 Admin
             </a>
         </div>
-        <div class="col-md-6 table-bordered-no">
-            <h2 class="red-fg">List of books</h2>
+        <div class="col-md-8 table-bordered-no">
+            <h2 class="red-fg text-center">List of books</h2>
         </div>
     </div>
     <div class="raw">
@@ -25,6 +25,7 @@
                     <col class="col-md-2">
                     <col class="col-md-2">
                     <col class="col-md-1">
+                    <col class="col-md-2">
                     <col class="col-md-2">
                 </colgroup>
                 <tbody>
@@ -42,21 +43,19 @@
                             @Html.DisplayNameFor(model => model.Pages)
                         </th>
                         <th style="background-color:lightsteelblue; color: white;">
+                            @Html.DisplayNameFor(model => model.Author)
+                        </th>
+                        <th style="background-color:lightsteelblue; color: white;">
                             @Html.DisplayNameFor(model => model.CreationDate)
                         </th>
-
-                        <th style="background-color:lightsteelblue;"></th>
+                        <th style="background-color:lightsteelblue;">
+                        </th>
                     </tr>
 
                     @if (Model == null)
                     {
                         <tr>
-                            <td>No books in the library yet</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="7">No books in the library yet</td>                            
                         </tr>
                     }
                     else
@@ -85,14 +84,13 @@
                                     @Html.DisplayFor(modelItem => item.Pages)
                                 </td>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Author.FullName)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.CreationDate)
                                 </td>
 
                                 <td>
-                                    <a href="@Url.Action("Details", "Books", new { id = item.Id })" class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                                        Details
-                                    </a>
                                     <a href="@Url.Action("Edit", "Books", new { id = item.Id })" class="btn btn-warning">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                         Edit
@@ -109,7 +107,7 @@
                     
                     <tr>
                         <td style="background-color:lightsteelblue"></td>
-                        <td style="background-color:lightsteelblue">
+                        <td style="background-color:lightsteelblue" colspan="6">
                             <a href="@Url.Action("Create", "Book")" class="btn btn-primary pull-right">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 Create New
