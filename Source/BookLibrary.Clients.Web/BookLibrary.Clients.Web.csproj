@@ -272,6 +272,7 @@
     <Content Include="Views\Genre\Create.cshtml" />
     <Content Include="Views\Genre\Edit.cshtml" />
     <Content Include="Views\Genre\_DeleteConfirm.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

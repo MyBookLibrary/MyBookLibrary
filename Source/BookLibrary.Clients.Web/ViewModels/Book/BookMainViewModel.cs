@@ -70,6 +70,7 @@ namespace BookLibrary.ViewModels.Book
             
             this.Picture = pictureModel;
         }
+
         [Required]
         [Display(Name = "Id")]
         [Range(Consts.Book.Id.MinValue, Consts.Book.Id.MaxValue, ErrorMessage = Consts.Book.Id.ErrorMessage)]
@@ -93,18 +94,6 @@ namespace BookLibrary.ViewModels.Book
         [Required]
         [Display(Name = "Creation Date")]
         public DateTime CreationDate { get; set; }
-
-        //[Required]
-        //[Display(Name = "AuthorId")]
-        //public int AuthorId { get; set; }
-
-        //[Required]
-        //[Display(Name = "GenreId")]
-        //public int GenreId { get; set; }
-
-        //[Required]
-        //[Display(Name = "PictureId")]
-        //public int PictureId { get; set; }
 
         [Display(Name = "Author")]
         public AuthorMainViewModel Author { get; set; }

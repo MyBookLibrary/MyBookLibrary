@@ -116,7 +116,7 @@ namespace BookLibrary.Data.Services
             }
 
             // TODO create MyDbModelsMapper.Book2BookModel and replace
-            bookToReturn = new BookModel(book);
+            bookToReturn = new BookModel(book, book.Picture);
 
             return bookToReturn;
         }

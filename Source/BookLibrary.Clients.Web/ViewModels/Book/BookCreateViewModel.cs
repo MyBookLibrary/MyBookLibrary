@@ -15,7 +15,7 @@ namespace BookLibrary.ViewModels.Book
         public BookCreateViewModel()
         {
         }
-
+                
         [Required]
         [Display(Name = "Id")]
         [Range(Consts.Book.Id.MinValue, Consts.Book.Id.MaxValue, ErrorMessage = Consts.Book.Id.ErrorMessage)]
@@ -40,12 +40,16 @@ namespace BookLibrary.ViewModels.Book
         [Display(Name = "Creation Date")]
         public DateTime CreationDate { get; set; }
 
-        [Display(Name = "Select Author")]
+        [Display(Name = "Selected Author Id")]
         public int SelectedAuthorId { get; set; }
+
+        [Display(Name = "Select Author")]
         public IEnumerable<SelectListItem> AuthorSelectList { get; set; }
 
-        [Display(Name = "Select Genre")]
+        [Display(Name = "Selected Genre Id")]
         public int SelectedGenreId { get; set; }
+
+        [Display(Name = "Select Genre")]
         public IEnumerable<SelectListItem> GenreSelectList { get; set; }
 
         [Display(Name = "Picture Url")]
@@ -53,7 +57,7 @@ namespace BookLibrary.ViewModels.Book
         [MinLength(Consts.Picture.Url.MinLength, ErrorMessage = Consts.Picture.Url.ErrorMessageMinLength)]
         public string PictureUrl { get; set; }
 
-        [Display(Name = "Create Book")]
+        [Display(Name = "Create/Edit Book")]
         public string ModelName { get; set; }
     }
 }
