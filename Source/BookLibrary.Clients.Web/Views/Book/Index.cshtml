@@ -67,11 +67,11 @@
                                 <td>
                                     @if (item.Picture == null)
                                     {
-                                        <img src="~/Assets/Images/book-default.png" alt="default picture" width="100" height="50" />
+                                        <img src="~/Assets/Images/book-default.png" alt="default picture" height="100" />
                                     }
                                     else
                                     {
-                                        <img src="@Html.Encode(item.Picture.Url)" alt="" width="100" height="50" />
+                                        <img src="@Html.Encode(item.Picture.Url)" alt="" height="100" />
                                     }
                                     
                                 </td>
