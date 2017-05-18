@@ -42,6 +42,9 @@ database and viewing list of available books after logging in the system.
 	- Change folowing lines according your local installation path.
 		> ( NAME = N'BookLibrary', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\BookLibrary.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
 		> ( NAME = N'BookLibrary_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\BookLibrary_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+	- Database name BookLibrary
+		- username: booklibrary
+		- password: 11
 	
 - Change the ConnectionString in the Web.config if using MSSQL Express version 
 [ConnectionStrings location](./Source/BookLibrary.Clients.Web/Configurations/ConnectionStrings.config)
