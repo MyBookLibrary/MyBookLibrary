@@ -37,15 +37,12 @@ namespace BookLibrary.Ef.Models.MetaData
         [Display(Name = "Creation Date")]
         public DateTime CreationDate { get; set; }
 
-        [Required]
         [Display(Name = "AuthorId")]
         public int? AuthorId { get; set; }
 
-        [Required]
         [Display(Name = "GenreId")]
         public int? GenreId { get; set; }
 
-        [Required]
         [Display(Name = "PictureId")]
         public int? PictureId { get; set; }
 

@@ -32,11 +32,15 @@ namespace BookLibrary.Ef.Models
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
     
-        public virtual int usp_InsertBook(string title, Nullable<int> pages, Nullable<System.DateTime> creationDate)
+        public virtual int usp_InsertBook(string title, string description, Nullable<int> pages, Nullable<System.DateTime> creationDate, Nullable<int> authorId, Nullable<int> genreId, Nullable<int> pictureId)
         {
             var titleParameter = title != null ?
                 new ObjectParameter("Title", title) :
                 new ObjectParameter("Title", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
     
             var pagesParameter = pages.HasValue ?
                 new ObjectParameter("Pages", pages) :
@@ -46,7 +50,19 @@ namespace BookLibrary.Ef.Models
                 new ObjectParameter("CreationDate", creationDate) :
                 new ObjectParameter("CreationDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertBook", titleParameter, pagesParameter, creationDateParameter);
+            var authorIdParameter = authorId.HasValue ?
+                new ObjectParameter("AuthorId", authorId) :
+                new ObjectParameter("AuthorId", typeof(int));
+    
+            var genreIdParameter = genreId.HasValue ?
+                new ObjectParameter("GenreId", genreId) :
+                new ObjectParameter("GenreId", typeof(int));
+    
+            var pictureIdParameter = pictureId.HasValue ?
+                new ObjectParameter("PictureId", pictureId) :
+                new ObjectParameter("PictureId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_InsertBook", titleParameter, descriptionParameter, pagesParameter, creationDateParameter, authorIdParameter, genreIdParameter, pictureIdParameter);
         }
     }
 }

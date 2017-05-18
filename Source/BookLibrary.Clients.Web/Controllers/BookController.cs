@@ -44,7 +44,16 @@ namespace BookLibrary.Controllers
             IList<BookMainViewModel> booksToReturn = new List<BookMainViewModel>();
             foreach (BookModel book in books)
             {
-                BookMainViewModel b = new BookMainViewModel(book, book.Picture);
+                BookMainViewModel b;
+                if (book.Picture == null)
+                {
+                    b = new BookMainViewModel(book);
+                }
+                else
+                {
+                    b = new BookMainViewModel(book, book.Picture);
+                }
+
                 booksToReturn.Add(b);
             }
 
@@ -156,7 +165,15 @@ namespace BookLibrary.Controllers
             bookCreateViewModel.AuthorSelectList = authorController.GetAuthorSelectList();
             bookCreateViewModel.SelectedGenreId = bookModel.Genre.Id;
             bookCreateViewModel.GenreSelectList = genreController.GetGenreSelectList();
-            bookCreateViewModel.PictureUrl = bookModel.Picture.Url;
+
+            if (bookModel.Picture == null)
+            {
+                bookCreateViewModel.PictureUrl = string.Empty;
+            }
+            else
+            {
+                bookCreateViewModel.PictureUrl = bookModel.Picture.Url;
+            }
 
             return View(bookCreateViewModel);
         }

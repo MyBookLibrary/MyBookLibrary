@@ -19,7 +19,7 @@ namespace BookLibrary.Constants.Models
 
             public struct Title
             {
-                public const int MaxLength = 50;
+                public const int MaxLength = 100;
                 public const int MinLength = 2;
                 public const string ErrorMessageMaxLength = "Book title length should be less than " + "100" + " symbols.";
                 public const string ErrorMessageMinLength = "Book title length should be more than " + "2" + " symbols.";

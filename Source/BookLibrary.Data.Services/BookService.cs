@@ -115,8 +115,15 @@ namespace BookLibrary.Data.Services
                 throw new ArgumentNullException(errorMessage);
             }
 
-            // TODO create MyDbModelsMapper.Book2BookModel and replace
-            bookToReturn = new BookModel(book, book.Picture);
+            // TODO create MyDbModelsMapper.Book2BookModel and replace and optimeize BookModel construntors
+            if (book.Picture == null)
+            {
+                bookToReturn = new BookModel(book);
+            }
+            else
+            {
+                bookToReturn = new BookModel(book, book.Picture);
+            }
 
             return bookToReturn;
         }
@@ -186,10 +193,15 @@ namespace BookLibrary.Data.Services
 
             // TODO create MyDbModelsMapper.BookModel2Book
             Book bookToUpdate = new Book();
+
+            bookToUpdate.Id = bookModel.Id;
             bookToUpdate.Title = bookModel.Title;
             bookToUpdate.Description = bookModel.Description;
-            bookToUpdate.Author = (Author)bookModel.Author;
-            bookToUpdate.Genre = (Genre)bookModel.Genre;
+            bookToUpdate.CreationDate = bookModel.CreationDate;
+            bookToUpdate.Pages = bookModel.Pages;
+
+            bookToUpdate.AuthorId = bookModel.AuthorId;
+            bookToUpdate.GenreId = bookModel.GenreId;
 
             this.bookBaseOperatonsProvider.Update(bookToUpdate);
             this.dbContextSaveChanges.SaveChanges();
