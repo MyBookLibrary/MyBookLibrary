@@ -14,7 +14,7 @@ namespace BookLibrary.Pure.Models
         {
         }
 
-        // This constructor is used for DbModel 2 PureModel papping
+        // This constructor is used for DbModel 2 PureModel mapping
         // IPicture is the Ef model interface
         public PictureModel(IPicture picture)
         {
