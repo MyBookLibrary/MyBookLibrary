@@ -11,7 +11,7 @@ namespace BooksLibrary.Auth.Default.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("BookLibraryDbContextConnectionString", throwIfV1Schema: false)
         {
         }
 

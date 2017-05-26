@@ -1,4 +1,5 @@
-﻿using BooksLibrary.Auth.Default.Data;
+﻿using BookLibrary.Constants;
+using BooksLibrary.Auth.Default.Data;
 using BooksLibrary.Auth.Default.Models;
 using BooksLibrary.Auth.Default.Services;
 
@@ -37,11 +38,11 @@ namespace BooksLibrary.Auth.Default.Managers
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequiredLength = Consts.Password.Lenght.MinValue,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
 
             // Configure user lockout defaults

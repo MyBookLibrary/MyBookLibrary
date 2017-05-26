@@ -106,6 +106,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookLibrary.Constants\BookLibrary.Constants.csproj">
+      <Project>{31177505-BD9C-4384-A6EC-098C2E7D137E}</Project>
+      <Name>BookLibrary.Constants</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
