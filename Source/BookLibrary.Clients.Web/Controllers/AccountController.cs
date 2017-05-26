@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using BookLibrary.Models;
 using BooksLibrary.Auth.Default.Managers;
 using BooksLibrary.Auth.Default.Models;
+using BookLibrary.ViewModels.Account;
 
 namespace BookLibrary.Controllers
 {
