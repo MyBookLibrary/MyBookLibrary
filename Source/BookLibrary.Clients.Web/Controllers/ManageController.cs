@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BookLibrary.Models;
 using BooksLibrary.Auth.Default.Managers;
+using BookLibrary.ViewModels.Manage;
 
 namespace BookLibrary.Controllers
 {
