@@ -1,5 +1,5 @@
 # BookLibraty Todo list #
-Features-driven Development
+Features-driven Development.
 Do not forget to update the ToDo list by every change :)!
 
 ----------
