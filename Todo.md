@@ -39,7 +39,33 @@ Pictures = {
       	Url
 }
 
-### Home Feature
+### Author Feature
+- [x] Database maping;
+- [x] Extract and use data model interface;
+- [x] Create data model second partial class and inherit the respective Interface;
+- [x] Define guard constants;
+- [ ] Set data model constraints in MSSQL;
+- [x] Set data model guard attributes in MetaData file;
+- [x] Create Data Service class and implement the basic CRUD (Create, Read, Update, Delete) operations;
+- [x] Bind all in the used container-Ninject.
+- [x] Raw view for Preview, Edit, Insert, Delete;
+- [x] Add View Model with validation attributes;
+- [x] Views:
+	- [x] Index View:
+		- [x] List all items with some basic UI styles;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [x] Create View:
+		- [x] Put some basic UI styles;
+		- [x] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [x] Edit View:
+		- [x] Put with some basic UI styles;
+		- [x] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [x] Delete Confirm View:
+		- [x] Extraxt delete confirm in modal form;
+		- [x] Put some basic UI styles;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
 
 ### Books Feature
 - [x] Database maping;
@@ -48,27 +74,26 @@ Pictures = {
 - [x] Define guard constants;
 - [ ] Set data model constraints in MSSQL;
 - [x] Set data model guard attributes in MetaData file;
-- [x] Create Service Data class and implement the basic CRUD (Create, Read, Update, Delete) operations;
-- [ ] Bind all in the used container-Ninject.
-- [ ] Raw view for Preview, Edit, Insert, Delete;
-- [ ] Add View Model with validation attributes;
-- [ ] Views:
-	- [ ] Index View:
-		- [ ] Put some basic UI styles;
-		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
-	- [ ] Create View:
-		- [ ] Put some basic UI styles;
-		- [ ] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
-		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
-	- [ ] Edit View:
-		- [ ] Put some basic UI styles;
-		- [ ] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
-		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
-	- [ ] Delete Confirm View:
-		- [ ] Extraxt delete consifm in modal form;
-		- [ ] Put some basic UI styles;
-		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
-	- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
+- [x] Create Data Service class and implement the basic CRUD (Create, Read, Update, Delete) operations;
+- [x] Bind all in the used container-Ninject.
+- [x] Raw view for Preview, Edit, Insert, Delete;
+- [x] Add View Model with validation attributes;
+- [x] Views:
+	- [x] Index View:
+		- [x] List all items with some basic UI styles;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [x] Create View:
+		- [x] Put some basic UI styles;
+		- [x] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [x] Edit View:
+		- [x] Put some basic UI styles;
+		- [x] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [x] Delete Confirm View:
+		- [x] Extraxt delete consifm in modal form;
+		- [x] Put some basic UI styles;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
 	
 - [ ] Routing and base Redirects/Rewrites;
 - [ ] Unit testing;
@@ -84,8 +109,8 @@ Pictures = {
 
 ### General Tasks
 1. [x] Separate the Identity in project *.Default.Auth;
-1. [ ] Data provider project with the general CRUD operations *.Data.Provider;
-1. [ ] Crate separate Ef Models, Pure Models and View Models and MyMapper;
+1. [x] Data provider project with the general CRUD operations *.Data.Provider;
+1. [x] Crate separate Ef Models, Pure Models and View Models and MyMapper;
 	- https://lostechies.com/jimmybogard/2009/06/30/how-we-do-mvc-view-models/
 1. [ ] Change the favicon;
 1. [ ] Create SiteMap file. ???
