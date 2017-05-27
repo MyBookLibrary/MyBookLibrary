@@ -11,7 +11,7 @@ database and viewing list of available books after logging in the system.
 ## Used Technologies
 - ASP.NET MVC;
 - MSSQL;
-- Entityframework;
+- Entity Framework;
 - Bootstrap;
 - ...
 
