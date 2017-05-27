@@ -1,10 +1,11 @@
 # BookLibraty Todo list #
-
+Features-driven Development
 Do not forget to update the ToDo list by every change :)!
+
 ----------
-## Features-driven Development
-- [x] Create database model;
-- [x] Create seed data;
+
+- [x] Create database models;
+- [x] Create seed data sql scripts;
 
 ### Database Model
 
@@ -100,6 +101,38 @@ Book = {
 		- [x] Extraxt delete confirm in modal form;
 		- [x] Put some basic UI styles;
 		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
+- [ ] Unit testing:
+	- [ ] Unit tests for the service layer;
+	- [ ] Unit tests for the controller;	
+- [ ] Routing and base Redirects/Rewrites;
+
+### Picture Feature
+- [x] Database maping;
+- [ ] Extract and use data model interface;
+- [ ] Create data model second partial class and inherit the respective Interface;
+- [ ] Define guard constants;
+- [ ] Set data model constraints in MSSQL;
+- [ ] Set data model guard attributes in MetaData file;
+- [ ] Create Data Service class and implement the basic CRUD (Create, Read, Update, Delete) operations;
+- [ ] Bind all in the used container-Ninject.
+- [ ] Raw view for Preview, Edit, Insert, Delete;
+- [ ] Add View Model with validation attributes;
+- [ ] Views:
+	- [ ] Index View:
+		- [ ] List all items with some basic UI styles;
+		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [ ] Create View:
+		- [ ] Put some basic UI styles;
+		- [ ] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
+		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [ ] Edit View:
+		- [ ] Put with some basic UI styles;
+		- [ ] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
+		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [ ] Delete Confirm View:
+		- [ ] Extraxt delete confirm in modal form;
+		- [ ] Put some basic UI styles;
+		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
 - [ ] Unit testing:
 	- [ ] Unit tests for the service layer;
 	- [ ] Unit tests for the controller;	
