@@ -66,7 +66,11 @@ Pictures = {
 		- [x] Extraxt delete confirm in modal form;
 		- [x] Put some basic UI styles;
 		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
-
+- [ ] Unit testing:
+	- [ ] Unit tests for the service layer;
+	- [ ] Unit tests for the controller;	
+- [ ] Routing and base Redirects/Rewrites;
+	
 ### Books Feature
 - [x] Database maping;
 - [x] Extract and use data model interface;
@@ -94,9 +98,10 @@ Pictures = {
 		- [x] Extraxt delete consifm in modal form;
 		- [x] Put some basic UI styles;
 		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
-	
+- [ ] Unit testing:
+	- [ ] Unit tests for the service layer;
+	- [ ] Unit tests for the controller;	
 - [ ] Routing and base Redirects/Rewrites;
-- [ ] Unit testing;
 - [ ] Local IIS Deployment and manual test.
 	http://www.booklibrary.com
 - [ ] Azure Deployment;
