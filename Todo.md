@@ -9,23 +9,34 @@ Do not forget to update the ToDo list by every change :)!
 ### Database Model
 
 Book = {
-	Id;
-	Title;
-	CoverImage;
-	Description;
-	AuthorId;
-	GenreId;
+	Id,
+	Title,
+      	Description,
+      	Pages,
+      	CreationDate,
+      	PictureId,
+      	AuthorId,
+      	GenreId
 }
 
 Genres = {
-	Id;
-	Name;
+	Id,
+	Name
 }
 
 Authors = {
-	Id;
-	FirstName;
-	LastName;
+	Id,
+	FirstName,
+	LastName
+}
+
+Pictures = {
+	Id,
+	Name,
+      	Width,
+      	Height,
+      	SizeMb,
+      	Url
 }
 
 ### Home Feature
