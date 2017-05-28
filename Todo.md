@@ -108,19 +108,19 @@ Book = {
 
 ### Picture Feature
 - [x] Database maping;
-- [ ] Extract and use data model interface;
-- [ ] Create data model second partial class and inherit the respective Interface;
-- [ ] Define guard constants;
+- [x] Extract and use data model interface;
+- [x] Create data model second partial class and inherit the respective Interface;
+- [x] Define guard constants;
 - [ ] Set data model constraints in MSSQL;
-- [ ] Set data model guard attributes in MetaData file;
-- [ ] Create Data Service class and implement the basic CRUD (Create, Read, Update, Delete) operations;
-- [ ] Bind all in the used container-Ninject.
+- [x] Set data model guard attributes in MetaData file;
+- [x] Create Data Service class and implement the basic CRUD (Create, Read, Update, Delete) operations;
+- [x] Bind all in the used container-Ninject.
 - [ ] Raw view for Preview, Edit, Insert, Delete;
-- [ ] Add View Model with validation attributes;
+- [x] Add View Model with validation attributes;
 - [ ] Views:
-	- [ ] Index View:
-		- [ ] List all items with some basic UI styles;
-		- [ ] Test every single function from the service Preview, Edit, Insert, Delete;
+	- [x] Index View:
+		- [x] List all items with some basic UI styles;
+		- [x] Test every single function from the service Preview, Edit, Insert, Delete;
 	- [ ] Create View:
 		- [ ] Put some basic UI styles;
 		- [ ] Validation, Html.ValidationMessage, Html.ValidationSummary, Validation.RequireField;
