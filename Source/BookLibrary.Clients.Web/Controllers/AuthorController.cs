@@ -1,20 +1,15 @@
-﻿using BookLibrary.Data.Services.Contracts;
+﻿using BookLibrary.App_Start;
+using BookLibrary.Constants;
+using BookLibrary.Contracts;
+using BookLibrary.Data.Services.Contracts;
 using BookLibrary.Pure.Models;
 using BookLibrary.ViewModels.Author;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Ninject;
-using BookLibrary.App_Start;
-using BookLibrary.Data.Services;
-using BookLibrary.Data.Provider;
-using BookLibrary.Data.Provider.Operations;
-using BookLibrary.Ef.Models;
-using BookLibrary.Contracts;
 using System.Net;
-using BookLibrary.Constants;
+using System.Web.Mvc;
 
 namespace BookLibrary.Controllers
 {
@@ -42,8 +37,7 @@ namespace BookLibrary.Controllers
             
             return View(authorsToReturn.AsEnumerable());
         }
-
-        
+                
         // GET: Author/Create
         public ActionResult Create()
         {

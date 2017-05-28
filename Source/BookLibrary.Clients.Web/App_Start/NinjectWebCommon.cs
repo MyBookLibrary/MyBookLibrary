@@ -84,6 +84,7 @@ namespace BookLibrary.App_Start
             // Data services
             kernel.Bind<IAuthorService>().To<AuthorService>();
             kernel.Bind<IGenreService>().To<GenreService>();
+            kernel.Bind<IPictureService>().To<PictureService>();
             kernel.Bind<IBookService>().To<BookService>();
         }
     }

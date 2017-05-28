@@ -1,15 +1,12 @@
 ﻿using BookLibrary.Contracts;
-using System;
+using BookLibrary.Pure.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookLibrary.Data.Services.Contracts
 {
     public interface IPictureService
     {
-        IEnumerable<IPictureModel> GetAllPictures();
+        IEnumerable<PictureModel> GetAllPictures();
 
         IEnumerable<IPictureModel> GetAllPicturesSortedById();
 

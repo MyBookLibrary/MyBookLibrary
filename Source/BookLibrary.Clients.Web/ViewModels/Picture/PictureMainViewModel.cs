@@ -30,7 +30,7 @@ namespace BookLibrary.ViewModels.Picture
             this.Name = name;
         }
 
-        public PictureMainViewModel(int id, string name, int width, int height)
+        public PictureMainViewModel(int id, string name, int? width, int? height)
         {
             this.Id = id;
             this.Name = name;
@@ -38,7 +38,7 @@ namespace BookLibrary.ViewModels.Picture
             this.Height = height;
         }
 
-        public PictureMainViewModel(int id, string name, int width, int height, int sizeMb)
+        public PictureMainViewModel(int id, string name, int? width, int? height, int? sizeMb)
         {
             this.Id = id;
             this.Name = name;
@@ -47,7 +47,7 @@ namespace BookLibrary.ViewModels.Picture
             this.SizeMb = sizeMb;
         }
 
-        public PictureMainViewModel(int id, string name, int width, int height, int sizeMb, string url)
+        public PictureMainViewModel(int id, string name, int? width, int? height, int? sizeMb, string url)
         {
             this.Id = id;
             this.Name = name;

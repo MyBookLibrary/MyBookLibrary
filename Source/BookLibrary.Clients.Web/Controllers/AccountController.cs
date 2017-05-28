@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using BookLibrary.Models;
+using BookLibrary.ViewModels;
 using BooksLibrary.Auth.Default.Managers;
 using BooksLibrary.Auth.Default.Models;
 using BookLibrary.ViewModels.Account;
